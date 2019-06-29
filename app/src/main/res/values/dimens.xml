@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--size-->
+    <dimen name="app_title_size">90sp</dimen>
+    <dimen name="top_button_size">36sp</dimen>
+    <dimen name="setting_button_text">40sp</dimen>
+    <!--padding-->
+    <dimen name="common_padding">16dp</dimen>
+    <!--margin-->
+    <dimen name="common_margin">16dp</dimen>
+    <dimen name="setting_button_margin">40dp</dimen>
+</resources>
