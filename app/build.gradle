@@ -13,7 +13,7 @@ android {
     }
     defaultConfig {
         applicationId "e.yoppie.newdartsx"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 28
         multiDexEnabled true
         versionCode 1
@@ -49,7 +49,6 @@ dependencies {
     //noinspection GradleDependency
     implementation "com.airbnb.android:lottie:$lottie_version"
 
-    // Android Architecture Components
     // Lifecycle
     def arch_lifecycle_version = '1.1.1'
     implementation "android.arch.lifecycle:extensions:$arch_lifecycle_version"
@@ -68,8 +67,8 @@ dependencies {
     implementation "android.arch.persistence.room:guava:$arch_room_version"
 
     // Rx
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.5'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.8'
     implementation 'io.reactivex:rxkotlin:1.0.0'
     def rx_binding2_version = '2.2.0'
     implementation "com.jakewharton.rxbinding2:rxbinding-kotlin:$rx_binding2_version"
@@ -104,4 +103,9 @@ dependencies {
     def sthetho_version = '1.5.1'
     debugImplementation "com.facebook.stetho:stetho:$sthetho_version"
     debugImplementation "com.facebook.stetho:stetho-okhttp3:$sthetho_version"
+
+    // RecyclerView
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+
+    implementation 'uk.co.chrisjenx:calligraphy:2.3.0'
 }
