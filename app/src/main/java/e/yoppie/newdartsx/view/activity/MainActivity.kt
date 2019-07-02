@@ -18,13 +18,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         Animation.emphasize(this, start_button)
 
-        val soundPool = Sound.makeSoundPool()
-        val buttonSound = soundPool.load(this, R.raw.button_sound, 1)
+        val sound = Sound(this, R.raw.button_sound)
 
-        start_button.clicks().subscribe{
-                soundPool.play(buttonSound, 1.0f, 1.0f, 0, 0, 1.0f)
-                val intent = Intent(this, TargetActivity::class.java)
-                startActivity(intent)
-            }
+        start_button.clicks().subscribe {
+            sound.play()
+            val intent = Intent(this, TargetActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
