@@ -14,7 +14,7 @@ class Animation {
                 override fun run() {
                     val animation = AnimationUtils.loadAnimation(context, R.anim.emphasize)
                     view.startAnimation(animation)
-                    handler.postDelayed(this, 3000)
+                    handler.postDelayed(this, 1500)
                 }
             }
             handler.post(r)

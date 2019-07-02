@@ -20,6 +20,7 @@
             app:lottie_rawRes="@raw/rouded_top"/>
 
     <Button
+            android:id="@+id/setting_button"
             android:textColor="@color/colorPrimary"
             android:background="@android:color/black"
             android:text="@string/setting_button_text"

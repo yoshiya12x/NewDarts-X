@@ -13,7 +13,7 @@ android {
     }
     defaultConfig {
         applicationId "e.yoppie.newdartsx"
-        minSdkVersion 21
+        minSdkVersion 26
         targetSdkVersion 28
         multiDexEnabled true
         versionCode 1
