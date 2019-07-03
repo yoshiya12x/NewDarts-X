@@ -3,7 +3,7 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="e.yoppie.newdartsx">
 
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application
             android:allowBackup="true"
@@ -13,6 +13,8 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
             tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity android:name=".view.activity.SettingActivity">
+        </activity>
         <activity android:name=".view.activity.TargetActivity">
         </activity>
         <activity android:name=".view.activity.MainActivity">
@@ -22,6 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <service android:name=".service.BgmService"/>
     </application>
 

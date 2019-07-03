@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         start_button.clicks().subscribe {
             sound.play()
-            val intent = Intent(this, TargetActivity::class.java)
+            val intent = Intent(this, SettingActivity::class.java)
             startActivity(intent)
         }
     }
