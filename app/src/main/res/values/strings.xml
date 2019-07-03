@@ -5,4 +5,6 @@
     <string name="start_button">START</string>
     <string name="setting_button">SETTING</string>
     <string name="setting_button_text">≡</string>
+    <string name="sound_setting_all">ALL</string>
+    <string name="sound_setting_bgm">BGM</string>
 </resources>

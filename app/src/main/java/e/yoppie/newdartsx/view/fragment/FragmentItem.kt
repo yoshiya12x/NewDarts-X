@@ -10,7 +10,7 @@ enum class FragmentItem(
     SEARCH(
         position = 0,
         title = "SEARCH WORDS",
-        newFragment = { SoundSettingFragment.newInstance() }
+        newFragment = { SearchWordsFragment.newInstance() }
     ),
     SOUND(
         position = 1,
@@ -20,7 +20,7 @@ enum class FragmentItem(
     EFFECT(
         position = 2,
         title = "EFFECT",
-        newFragment = { SoundSettingFragment.newInstance() }
+        newFragment = { EffectSettingFragment.newInstance() }
     );
 
     companion object {
