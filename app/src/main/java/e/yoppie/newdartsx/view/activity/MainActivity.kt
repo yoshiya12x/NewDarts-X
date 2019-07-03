@@ -19,9 +19,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // BGM START!!
-        val intentBgm = Intent(application, BgmService::class.java)
-        intentBgm.putExtra("REQUEST_CODE", 1)
-        startForegroundService(intentBgm)
+//        val intentBgm = Intent(application, BgmService::class.java)
+//        intentBgm.putExtra("REQUEST_CODE", 1)
+//        startForegroundService(intentBgm)
 
         Animation.emphasize(this, start_button)
 
