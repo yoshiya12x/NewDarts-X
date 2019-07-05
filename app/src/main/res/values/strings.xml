@@ -11,4 +11,5 @@
     <string name="sound_setting_bgm">BGM</string>
     <string name="sound_setting_others">OTHERS</string>
     <string name="search_words_setting_input_word">input word</string>
+    <string name="search_words_setting_add">add</string>
 </resources>

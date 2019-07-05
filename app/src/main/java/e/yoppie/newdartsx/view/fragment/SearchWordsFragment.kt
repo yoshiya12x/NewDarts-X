@@ -18,6 +18,10 @@ class SearchWordsFragment : Fragment() {
         return inflater.inflate(R.layout.search_words_setting_fragment, container, false)
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+    }
+
     companion object{
         fun newInstance(): SearchWordsFragment{
             return SearchWordsFragment().apply {

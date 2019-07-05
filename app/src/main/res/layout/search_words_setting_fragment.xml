@@ -48,7 +48,7 @@
 
         <Button
                 android:textColor="@color/colorPrimary"
-                android:text="add"
+                android:text="@string/search_words_setting_add"
                 android:background="@color/colorDark"
                 android:layout_weight="1"
                 android:layout_margin="4dp"
