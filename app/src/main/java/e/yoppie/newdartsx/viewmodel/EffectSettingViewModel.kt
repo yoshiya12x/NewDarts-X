@@ -52,21 +52,25 @@ class EffectSettingViewModel : ViewModel() {
                 isAllSwitchChecked.postValue(!isAllSwitchChecked.value!!)
                 isBullSwitchChecked.postValue(!isAllSwitchChecked.value!!)
                 isInBullSwitchChecked.postValue(!isAllSwitchChecked.value!!)
+                bullButtonBackGrounds.forEach { it.value.postValue(R.drawable.square_button_selector) }
+                inBullButtonBackGrounds.forEach { it.value.postValue(R.drawable.square_button_selector) }
             }
             R.id.bull_effect_switch -> {
-                if (!isBullSwitchChecked.value!! && isInBullSwitchChecked.value!!) {
-                    isAllSwitchChecked.postValue(true)
-                }
-                if (isBullSwitchChecked.value!!) {
+                if (!isBullSwitchChecked.value!!) {
+                    bullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)
+                    if(isInBullSwitchChecked.value!!) isAllSwitchChecked.postValue(true)
+                }else{
+                    bullButtonBackGrounds.forEach { it.value.postValue(R.drawable.square_button_selector) }
                     isAllSwitchChecked.postValue(false)
                 }
                 isBullSwitchChecked.postValue(!isBullSwitchChecked.value!!)
             }
             R.id.in_bull_effect_switch -> {
-                if (!isInBullSwitchChecked.value!! && isBullSwitchChecked.value!!) {
-                    isAllSwitchChecked.postValue(true)
-                }
-                if (isInBullSwitchChecked.value!!) {
+                if (!isInBullSwitchChecked.value!!) {
+                    inBullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)
+                    if(isBullSwitchChecked.value!!) isAllSwitchChecked.postValue(true)
+                }else{
+                    inBullButtonBackGrounds.forEach { it.value.postValue(R.drawable.square_button_selector) }
                     isAllSwitchChecked.postValue(false)
                 }
                 isInBullSwitchChecked.postValue(!isInBullSwitchChecked.value!!)
