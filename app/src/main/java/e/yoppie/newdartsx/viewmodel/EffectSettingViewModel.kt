@@ -13,6 +13,8 @@ class EffectSettingViewModel : ViewModel() {
     val isInBullSwitchChecked: MutableLiveData<Boolean> = MutableLiveData()
     var bullButtonBackGrounds: MutableMap<Int, MutableLiveData<Int>> = mutableMapOf()
     var inBullButtonBackGrounds: MutableMap<Int, MutableLiveData<Int>> = mutableMapOf()
+    var bullAnimationHandler = {}
+    var inBullAnimationHandler = {}
 
     init {
         isAllSwitchChecked.value = false
@@ -29,6 +31,7 @@ class EffectSettingViewModel : ViewModel() {
     }
 
     fun onClickBullButton(id: Int) {
+        bullAnimationHandler()
         isBullSwitchChecked.postValue(true)
         bullButtonBackGrounds.forEach {
             if (id == it.key) it.value.postValue(R.drawable.square_button2_selector)
@@ -38,6 +41,7 @@ class EffectSettingViewModel : ViewModel() {
     }
 
     fun onClickInBullButton(id: Int) {
+        inBullAnimationHandler()
         isInBullSwitchChecked.postValue(true)
         inBullButtonBackGrounds.forEach {
             if (id == it.key) it.value.postValue(R.drawable.square_button2_selector)
@@ -49,11 +53,16 @@ class EffectSettingViewModel : ViewModel() {
     fun onClickSwitch(view: View) {
         when (view.id) {
             R.id.all_switch -> {
+                if(isAllSwitchChecked.value!!){
+                    bullButtonBackGrounds.forEach { it.value.postValue(R.drawable.square_button_selector) }
+                    inBullButtonBackGrounds.forEach { it.value.postValue(R.drawable.square_button_selector) }
+                }else{
+                    bullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)
+                    inBullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)
+                }
                 isAllSwitchChecked.postValue(!isAllSwitchChecked.value!!)
                 isBullSwitchChecked.postValue(!isAllSwitchChecked.value!!)
                 isInBullSwitchChecked.postValue(!isAllSwitchChecked.value!!)
-                bullButtonBackGrounds.forEach { it.value.postValue(R.drawable.square_button_selector) }
-                inBullButtonBackGrounds.forEach { it.value.postValue(R.drawable.square_button_selector) }
             }
             R.id.bull_effect_switch -> {
                 if (!isBullSwitchChecked.value!!) {

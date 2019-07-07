@@ -1,11 +1,15 @@
 package e.yoppie.newdartsx.util
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.content.Context
 import android.databinding.BindingAdapter
 import android.os.Handler
+import android.support.constraint.ConstraintLayout
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Button
+import com.airbnb.lottie.LottieAnimationView
 import e.yoppie.newdartsx.R
 
 object Animation {
@@ -25,5 +29,18 @@ object Animation {
     @BindingAdapter("customBackground")
     fun Button.customBackground(id: Int){
         this.setBackgroundResource(id)
+    }
+
+    fun runLottieAnimation(parent: ConstraintLayout, id: Int, context: Context?){
+        val lottieAnimationView = LottieAnimationView(context)
+        lottieAnimationView.setAnimation(id)
+        parent.addView(lottieAnimationView)
+        lottieAnimationView.playAnimation()
+        lottieAnimationView.addAnimatorListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator?) {
+                lottieAnimationView.visibility = View.GONE
+            }
+        })
+
     }
 }
