@@ -45,7 +45,6 @@ class EffectSettingFragment : Fragment() {
         return binding.root
     }
 
-    @SuppressLint("CheckResult")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
     }
