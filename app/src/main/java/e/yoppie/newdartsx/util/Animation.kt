@@ -1,9 +1,11 @@
 package e.yoppie.newdartsx.util
 
 import android.content.Context
+import android.databinding.BindingAdapter
 import android.os.Handler
 import android.view.View
 import android.view.animation.AnimationUtils
+import android.widget.Button
 import e.yoppie.newdartsx.R
 
 object Animation {
@@ -17,5 +19,11 @@ object Animation {
             }
         }
         handler.post(r)
+    }
+
+    @JvmStatic
+    @BindingAdapter("customBackground")
+    fun Button.customBackground(id: Int){
+        this.setBackgroundResource(id)
     }
 }
