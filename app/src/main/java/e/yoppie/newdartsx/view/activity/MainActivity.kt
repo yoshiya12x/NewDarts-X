@@ -29,6 +29,9 @@ class MainActivity : AppCompatActivity() {
 
         start_button.clicks().subscribe {
             sound.play()
+        }
+
+        setting_button.clicks().subscribe{
             val intent = Intent(this, SettingActivity::class.java)
             startActivity(intent)
         }
