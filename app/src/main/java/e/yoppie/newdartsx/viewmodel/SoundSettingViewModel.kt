@@ -33,6 +33,32 @@ class SoundSettingViewModel : ViewModel() {
         }
     }
 
+    fun onClickBullButton(id: Int) {
+        bullSoundHandler()
+        isBullSwitchChecked.postValue(true)
+        bullButtonBackGrounds.forEach {
+            if (id == it.key) it.value.postValue(R.drawable.square_button2_selector)
+            else it.value.postValue(R.drawable.square_button_selector)
+        }
+        if (isBgmSwitchChecked.value!!
+            && isInBullSwitchChecked.value!!
+            && isOthersSwitchChecked.value!!
+        ) isAllSwitchChecked.postValue(true)
+    }
+
+    fun onClickInBullButton(id: Int) {
+        inBullSoundHandler()
+        isInBullSwitchChecked.postValue(true)
+        inBullButtonBackGrounds.forEach {
+            if (id == it.key) it.value.postValue(R.drawable.square_button2_selector)
+            else it.value.postValue(R.drawable.square_button_selector)
+        }
+        if (isBgmSwitchChecked.value!!
+            && isBullSwitchChecked.value!!
+            && isOthersSwitchChecked.value!!
+        ) isAllSwitchChecked.postValue(true)
+    }
+
     fun onClickSwitch(view: View) {
         when (view.id) {
             R.id.all_switch -> {
