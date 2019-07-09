@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import e.yoppie.newdartsx.R
 import e.yoppie.newdartsx.databinding.SoundSettingFragmentBinding
+import e.yoppie.newdartsx.util.Sound
 import e.yoppie.newdartsx.viewmodel.SoundSettingViewModel
 
 class SoundSettingFragment : Fragment() {
@@ -29,8 +30,18 @@ class SoundSettingFragment : Fragment() {
             false
         )
 
+        soundSettingViewModel.bullSoundHandler = {
+            val sound = Sound(context, R.raw.button_sound)
+            sound.play()
+        }
+        soundSettingViewModel.inBullSoundHandler = {
+            val sound = Sound(context, R.raw.button_sound)
+            sound.play()
+        }
+
         binding.viewModel = soundSettingViewModel
         binding.lifecycleOwner = this
+
         return binding.root
     }
 

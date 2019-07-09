@@ -4,6 +4,7 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.view.View
 import e.yoppie.newdartsx.R
+import e.yoppie.newdartsx.model.SoundModel
 
 class SoundSettingViewModel : ViewModel() {
     val isAllSwitchChecked: MutableLiveData<Boolean> = MutableLiveData()
@@ -13,8 +14,8 @@ class SoundSettingViewModel : ViewModel() {
     val isOthersSwitchChecked: MutableLiveData<Boolean> = MutableLiveData()
     var bullButtonBackGrounds: MutableMap<Int, MutableLiveData<Int>> = mutableMapOf()
     var inBullButtonBackGrounds: MutableMap<Int, MutableLiveData<Int>> = mutableMapOf()
-    var bullAnimationHandler = {}
-    var inBullAnimationHandler = {}
+    var bullSoundHandler = {}
+    var inBullSoundHandler = {}
 
     init {
         isAllSwitchChecked.value = false
@@ -22,6 +23,14 @@ class SoundSettingViewModel : ViewModel() {
         isBullSwitchChecked.value = false
         isInBullSwitchChecked.value = false
         isOthersSwitchChecked.value = false
+        SoundModel.getAll().forEach {
+            val mutableLiveData1 = MutableLiveData<Int>()
+            val mutableLiveData2 = MutableLiveData<Int>()
+            mutableLiveData1.value = it.backGroundId
+            mutableLiveData2.value = it.backGroundId
+            bullButtonBackGrounds[it.id] = mutableLiveData1
+            inBullButtonBackGrounds[it.id] = mutableLiveData2
+        }
     }
 
     fun onClickSwitch(view: View) {

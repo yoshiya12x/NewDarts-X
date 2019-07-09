@@ -4,7 +4,7 @@ import android.content.Context
 import android.media.AudioAttributes
 import android.media.SoundPool
 
-class Sound(context: Context, targetSound: Int) {
+class Sound(context: Context?, targetSound: Int) {
 
     private var soundPool: SoundPool
     private var sound: Int
