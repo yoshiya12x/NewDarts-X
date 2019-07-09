@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         bull_game.clicks().subscribe {
             sound.play()
         }
-        setting_button.clicks().subscribe{
+        setting_button.clicks().subscribe {
             val intent = Intent(this, SettingActivity::class.java)
             startActivity(intent)
         }

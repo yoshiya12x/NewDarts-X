@@ -29,13 +29,11 @@ class SoundSettingFragment : Fragment() {
             container,
             false
         )
-
+        val sound = Sound(context, R.raw.button_sound)
         soundSettingViewModel.bullSoundHandler = {
-            val sound = Sound(context, R.raw.button_sound)
             sound.play()
         }
         soundSettingViewModel.inBullSoundHandler = {
-            val sound = Sound(context, R.raw.button_sound)
             sound.play()
         }
 
@@ -45,8 +43,8 @@ class SoundSettingFragment : Fragment() {
         return binding.root
     }
 
-    companion object{
-        fun newInstance(): SoundSettingFragment{
+    companion object {
+        fun newInstance(): SoundSettingFragment {
             return SoundSettingFragment().apply {
                 // do nothing
             }

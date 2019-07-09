@@ -62,6 +62,13 @@ class SoundSettingViewModel : ViewModel() {
     fun onClickSwitch(view: View) {
         when (view.id) {
             R.id.all_switch -> {
+                if (isAllSwitchChecked.value!!) {
+                    bullButtonBackGrounds.forEach { it.value.postValue(R.drawable.square_button_selector) }
+                    inBullButtonBackGrounds.forEach { it.value.postValue(R.drawable.square_button_selector) }
+                } else {
+                    bullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)
+                    inBullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)
+                }
                 isAllSwitchChecked.postValue(!isAllSwitchChecked.value!!)
                 isBgmSwitchChecked.postValue(!isAllSwitchChecked.value!!)
                 isBullSwitchChecked.postValue(!isAllSwitchChecked.value!!)
@@ -81,22 +88,26 @@ class SoundSettingViewModel : ViewModel() {
             }
             R.id.bull_switch -> {
                 if (!isBullSwitchChecked.value!!) {
+                    bullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)
                     if (isBgmSwitchChecked.value!!
                         && isInBullSwitchChecked.value!!
                         && isOthersSwitchChecked.value!!
                     ) isAllSwitchChecked.postValue(true)
                 } else {
+                    bullButtonBackGrounds.forEach { it.value.postValue(R.drawable.square_button_selector) }
                     isAllSwitchChecked.postValue(false)
                 }
                 isBullSwitchChecked.postValue(!isBullSwitchChecked.value!!)
             }
             R.id.in_bull_switch -> {
                 if (!isInBullSwitchChecked.value!!) {
+                    inBullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)
                     if (isBgmSwitchChecked.value!!
                         && isBullSwitchChecked.value!!
                         && isOthersSwitchChecked.value!!
                     ) isAllSwitchChecked.postValue(true)
                 } else {
+                    inBullButtonBackGrounds.forEach { it.value.postValue(R.drawable.square_button_selector) }
                     isAllSwitchChecked.postValue(false)
                 }
                 isInBullSwitchChecked.postValue(!isInBullSwitchChecked.value!!)

@@ -4,7 +4,7 @@ import android.content.Context
 import android.media.AudioAttributes
 import android.media.SoundPool
 
-class Sound(context: Context?, targetSound: Int) {
+class Sound(context: Context?, soundId: Int) {
 
     private var soundPool: SoundPool
     private var sound: Int
@@ -18,10 +18,10 @@ class Sound(context: Context?, targetSound: Int) {
             .setAudioAttributes(audioAttributes)
             .setMaxStreams(1)
             .build()
-        sound = soundPool.load(context, targetSound, 1)
+        sound = soundPool.load(context, soundId, 1)
     }
 
-    fun play(){
+    fun play() {
         soundPool.play(sound, 1.0f, 1.0f, 0, 0, 1.0f)
     }
 }
