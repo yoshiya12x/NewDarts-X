@@ -11,6 +11,10 @@ class SoundSettingViewModel : ViewModel() {
     val isBullSwitchChecked: MutableLiveData<Boolean> = MutableLiveData()
     val isInBullSwitchChecked: MutableLiveData<Boolean> = MutableLiveData()
     val isOthersSwitchChecked: MutableLiveData<Boolean> = MutableLiveData()
+    var bullButtonBackGrounds: MutableMap<Int, MutableLiveData<Int>> = mutableMapOf()
+    var inBullButtonBackGrounds: MutableMap<Int, MutableLiveData<Int>> = mutableMapOf()
+    var bullAnimationHandler = {}
+    var inBullAnimationHandler = {}
 
     init {
         isAllSwitchChecked.value = false
