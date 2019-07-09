@@ -4,7 +4,8 @@
     <string name="app_name_part2">X</string>
     <string name="bull">BULL</string>
     <string name="in_bull">IN-BULL</string>
-    <string name="start_button">START</string>
+    <string name="bull_game">BULL GAME</string>
+    <string name="nob_game">NOB GAME</string>
     <string name="setting_button">SETTING</string>
     <string name="setting_button_text">≡</string>
     <string name="sound_setting_all">ALL</string>

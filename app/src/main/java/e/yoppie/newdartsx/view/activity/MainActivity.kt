@@ -23,14 +23,16 @@ class MainActivity : AppCompatActivity() {
 //        intentBgm.putExtra("REQUEST_CODE", 1)
 //        startForegroundService(intentBgm)
 
-        Animation.emphasize(this, start_button)
+        Animation.emphasize(this, nob_game)
+        Animation.emphasize(this, bull_game)
 
         val sound = Sound(this, R.raw.button_sound)
-
-        start_button.clicks().subscribe {
+        nob_game.clicks().subscribe {
             sound.play()
         }
-
+        bull_game.clicks().subscribe {
+            sound.play()
+        }
         setting_button.clicks().subscribe{
             val intent = Intent(this, SettingActivity::class.java)
             startActivity(intent)
