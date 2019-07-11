@@ -39,7 +39,7 @@ class EffectSettingFragment : Fragment() {
             Animation.runLottieAnimation(binding.parent, R.raw.bull5, context)
         }
 
-        binding.viewModel = effectSettingViewModel
+        binding.effectSettingViewModel = effectSettingViewModel
         binding.lifecycleOwner = this
 
         return binding.root

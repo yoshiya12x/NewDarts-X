@@ -37,7 +37,7 @@ class SoundSettingFragment : Fragment() {
             sound.play()
         }
 
-        binding.viewModel = soundSettingViewModel
+        binding.soundSettingViewModel = soundSettingViewModel
         binding.lifecycleOwner = this
 
         return binding.root

@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <variable name="viewModel" type="e.yoppie.newdartsx.viewmodel.SearchWordSettingViewModel"/>
+        <variable name="searchWordItemViewModel" type="e.yoppie.newdartsx.viewmodel.SearchWordItemViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -13,7 +13,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textColor="@android:color/white"
-                android:text="@string/nob_game"/>
+                android:text="@{searchWordItemViewModel.text}"/>
 
     </android.support.constraint.ConstraintLayout>
 </layout>
