@@ -12,4 +12,4 @@
 /captures
 .externalNativeBuild
 .idea/
-app/src/main/res/raw
+app/src/main/res/raw/bgm.mp3
