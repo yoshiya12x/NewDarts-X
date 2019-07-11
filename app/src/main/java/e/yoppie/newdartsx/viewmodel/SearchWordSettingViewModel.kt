@@ -8,9 +8,7 @@ class SearchWordSettingViewModel : ViewModel() {
 
     var searchWordListLiveData = MutableLiveData<MutableList<SearchWordModel>>()
     private var searchWordList = mutableListOf(
-        SearchWordModel(0, "SEARCH WORD"),
-        SearchWordModel(1, "SEARCH WORD"),
-        SearchWordModel(2, "SEARCH WORD")
+        SearchWordModel(0, "SEARCH WORD")
     )
 
     init {
