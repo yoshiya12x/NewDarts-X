@@ -1,5 +1,6 @@
 package e.yoppie.newdartsx.view.fragment
 
+import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.jakewharton.rxbinding2.view.clicks
 import e.yoppie.newdartsx.R
 import e.yoppie.newdartsx.databinding.SearchWordsSettingFragmentBinding
 import e.yoppie.newdartsx.model.SearchWordModel
@@ -24,22 +26,22 @@ class SearchWordsFragment : Fragment() {
         val searchWordList = mutableListOf(
             SearchWordModel(0, "X JAPAN"),
             SearchWordModel(1, "コナン"),
-            SearchWordModel(2, "ドロイド君"),
-            SearchWordModel(3, "ドロイド君"),
-            SearchWordModel(4, "ドロイド君"),
-            SearchWordModel(5, "ドロイド君"),
-            SearchWordModel(6, "ドロイド君"),
-            SearchWordModel(7, "ドロイド君"),
-            SearchWordModel(8, "ドロイド君")
+            SearchWordModel(2, "ドロイド君")
         )
         searchWordSettingViewModel.set(searchWordList)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        var binding = DataBindingUtil.inflate<SearchWordsSettingFragmentBinding>(inflater, R.layout.search_words_setting_fragment, container, false)
+        var binding = DataBindingUtil.inflate<SearchWordsSettingFragmentBinding>(
+            inflater,
+            R.layout.search_words_setting_fragment,
+            container,
+            false
+        )
         binding.lifecycleOwner = this
         binding = initSearchWordRecyclerView(binding)
+        binding = initAddWordButton(binding)
         return binding.root
     }
 
@@ -51,6 +53,18 @@ class SearchWordsFragment : Fragment() {
         val linearLayoutManager = LinearLayoutManager(activity)
         binding.searchWordRecyclerView.layoutManager = linearLayoutManager
         binding.searchWordRecyclerView.adapter = SearchWordRecyclerAdapter(this, searchWordSettingViewModel)
+        return binding
+    }
+
+    @SuppressLint("CheckResult")
+    private fun initAddWordButton(binding: SearchWordsSettingFragmentBinding): SearchWordsSettingFragmentBinding? {
+        val text = binding.userNameEditText.text.toString()
+        binding.addWordButton
+            .clicks()
+            .filter { text.isNotBlank() }
+            .subscribe {
+                searchWordSettingViewModel.add(text)
+            }
         return binding
     }
 

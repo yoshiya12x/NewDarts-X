@@ -20,12 +20,15 @@ class SearchWordSettingViewModel : ViewModel() {
         this.searchWordList = searchWordList
     }
 
-    fun remove(searchWordItemViewModel: SearchWordItemViewModel){
-        val removeSearchWordModel = SearchWordModel(
-            searchWordItemViewModel.id.value!!,
-            searchWordItemViewModel.text.value!!
-        )
-        searchWordList.remove(removeSearchWordModel)
+    fun remove(searchWordItemViewModel: SearchWordItemViewModel) {
+        val target = SearchWordModel(searchWordItemViewModel.id.value!!, searchWordItemViewModel.text.value!!)
+        searchWordList.remove(target)
+        searchWordListLiveData.value = searchWordList
+    }
+
+    fun add(text: String) {
+        val target = SearchWordModel(searchWordList.size, text)
+        searchWordList.add(target)
         searchWordListLiveData.value = searchWordList
     }
 }
