@@ -58,12 +58,12 @@ class SearchWordsFragment : Fragment() {
 
     @SuppressLint("CheckResult")
     private fun initAddWordButton(binding: SearchWordsSettingFragmentBinding): SearchWordsSettingFragmentBinding? {
-        val text = binding.userNameEditText.text.toString()
         binding.addWordButton
             .clicks()
-            .filter { text.isNotBlank() }
+            .filter { binding.userNameEditText.text.toString().isNotBlank() }
             .subscribe {
-                searchWordSettingViewModel.add(text)
+                searchWordSettingViewModel.add(binding.userNameEditText.text.toString())
+                binding.searchWordRecyclerView.scrollToPosition(0)
             }
         return binding
     }

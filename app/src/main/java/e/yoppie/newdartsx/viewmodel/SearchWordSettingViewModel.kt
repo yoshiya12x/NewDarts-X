@@ -28,7 +28,7 @@ class SearchWordSettingViewModel : ViewModel() {
 
     fun add(text: String) {
         val target = SearchWordModel(searchWordList.size, text)
-        searchWordList.add(target)
+        searchWordList.add(0, target)
         searchWordListLiveData.value = searchWordList
     }
 }
