@@ -29,7 +29,7 @@
                 android:textSize="@dimen/del_setting_search_word_button"
                 android:background="@android:color/black"
                 android:layout_alignParentEnd="true"
-                android:onClick="@{() -> searchWordSettingViewModel.remove(searchWordItemViewModel)}"/>
+                android:onClick="@{() -> searchWordSettingViewModel.remove(searchWordItemViewModel, context)}"/>
 
     </RelativeLayout>
 </layout>

@@ -7,12 +7,19 @@ import android.os.Bundle
 import com.facebook.stetho.Stetho
 import com.jakewharton.rxbinding2.view.clicks
 import e.yoppie.newdartsx.R
+import e.yoppie.newdartsx.model.room.entity.SoundEntity
+import e.yoppie.newdartsx.repository.SoundRepository
 import e.yoppie.newdartsx.service.BgmService
 import e.yoppie.newdartsx.util.Animation
 import e.yoppie.newdartsx.util.Sound
+import io.reactivex.Completable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    private val soundRepository = SoundRepository()
+    private var soundEntity: SoundEntity? = null
 
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,12 +49,24 @@ class MainActivity : AppCompatActivity() {
         initStetho()
     }
 
-    private fun initStetho(){
+    private fun initStetho() {
         Stetho.initialize(
             Stetho.newInitializerBuilder(this)
                 .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
                 .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
                 .build()
         )
+    }
+
+    @SuppressLint("CheckResult")
+    private fun initSound() {
+        Completable
+            .fromAction { soundEntity = soundRepository.getSavedSound(this) }
+            .subscribeOn(Schedulers.io())
+            .subscribe {
+                if (soundEntity == null) {
+
+                }
+            }
     }
 }

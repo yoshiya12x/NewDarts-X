@@ -5,11 +5,14 @@ import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 import e.yoppie.newdartsx.model.room.dao.SearchWordDao
+import e.yoppie.newdartsx.model.room.dao.SoundDao
 import e.yoppie.newdartsx.model.room.entity.SearchWordEntity
+import e.yoppie.newdartsx.model.room.entity.SoundEntity
 
-@Database(entities = [SearchWordEntity::class], version = 1)
+@Database(entities = [SearchWordEntity::class, SoundEntity::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun searchWordDao(): SearchWordDao
+    abstract fun soundDao(): SoundDao
 
     companion object {
         private var INSTANCE: AppDatabase? = null

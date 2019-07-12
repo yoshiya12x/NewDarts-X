@@ -32,20 +32,27 @@ class SearchWordSettingViewModel : ViewModel() {
             .subscribe {
                 val searchWordList: MutableList<SearchWordModel> = mutableListOf()
                 if (localSearchWordList.isNotEmpty()) {
-                    localSearchWordList.forEach {
-                        Log.d("yoppie_debug", it.text)
-                        searchWordList.add(SearchWordModel(it.id, it.text!!))
-                    }
+                    localSearchWordList.forEach { searchWordList.add(SearchWordModel(it.id, it.text!!)) }
                     this.searchWordList = searchWordList
                     this.searchWordListLiveData.postValue(searchWordList)
                 }
             }
     }
 
-    fun remove(searchWordItemViewModel: SearchWordItemViewModel) {
+    @SuppressLint("CheckResult")
+    fun remove(searchWordItemViewModel: SearchWordItemViewModel, context: Context) {
         val target = SearchWordModel(searchWordItemViewModel.id.value!!, searchWordItemViewModel.text.value!!)
         searchWordList.remove(target)
         searchWordListLiveData.value = searchWordList
+        Completable
+            .fromAction {
+                val searchWordEntity = SearchWordEntity()
+                searchWordEntity.id = target.id
+                searchWordEntity.text = target.text
+                searchWordRepository.deleteSavedSearchWord(context, searchWordEntity)
+            }
+            .subscribeOn(Schedulers.io())
+            .subscribe { Log.d("yoppie_debug", "delete!") }
     }
 
     @SuppressLint("CheckResult")
@@ -54,12 +61,7 @@ class SearchWordSettingViewModel : ViewModel() {
         searchWordList.add(0, target)
         searchWordListLiveData.value = searchWordList
         Completable
-            .fromAction {
-                searchWordRepository.insertSearchWord(
-                    context,
-                    SearchWordEntity.create(text)
-                )
-            }
+            .fromAction { searchWordRepository.insertSearchWord(context, SearchWordEntity.create(text)) }
             .subscribeOn(Schedulers.io())
             .subscribe { Log.d("yoppie_debug", "insert!") }
     }
