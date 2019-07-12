@@ -90,6 +90,9 @@ enum class SoundModel(
         fun forInBullButtonId(inBullButtonId: Int): SoundModel {
             return values().first { it.inBullButtonId == inBullButtonId }
         }
+        fun forSoundId(soundId: Int): SoundModel {
+            return values().first { it.soundId == soundId }
+        }
         fun getAll(): Array<SoundModel> {
             return values()
         }

@@ -1,12 +1,20 @@
 package e.yoppie.newdartsx.viewmodel
 
+import android.annotation.SuppressLint
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import android.content.Context
 import android.view.View
 import e.yoppie.newdartsx.R
 import e.yoppie.newdartsx.model.SoundModel
+import e.yoppie.newdartsx.model.room.entity.SoundEntity
+import e.yoppie.newdartsx.repository.SoundRepository
+import io.reactivex.Completable
+import io.reactivex.schedulers.Schedulers
 
 class SoundSettingViewModel : ViewModel() {
+
+    private val soundRepository = SoundRepository()
     val isAllSwitchChecked: MutableLiveData<Boolean> = MutableLiveData()
     val isBgmSwitchChecked: MutableLiveData<Boolean> = MutableLiveData()
     val isBullSwitchChecked: MutableLiveData<Boolean> = MutableLiveData()
@@ -31,6 +39,28 @@ class SoundSettingViewModel : ViewModel() {
             bullButtonBackGrounds[it.id] = mutableLiveData1
             inBullButtonBackGrounds[it.id] = mutableLiveData2
         }
+    }
+
+    @SuppressLint("CheckResult")
+    fun initView(context: Context) {
+        var soundEntity = SoundEntity()
+        Completable
+            .fromAction { soundEntity = soundRepository.getSavedSound(context) }
+            .subscribeOn(Schedulers.io())
+            .subscribe {
+                isBgmSwitchChecked.postValue(soundEntity.bgmFlag)
+                isOthersSwitchChecked.postValue(soundEntity.othersFlag)
+                if (soundEntity.bullSound != 0) {
+                    isBullSwitchChecked.postValue(true)
+                    val targetId = SoundModel.forSoundId(soundEntity.bullSound!!).id
+                    bullButtonBackGrounds[targetId]!!.postValue(R.drawable.square_button2_selector)
+                }
+                if (soundEntity.inBullSound != 0) {
+                    isInBullSwitchChecked.postValue(true)
+                    val targetId = SoundModel.forSoundId(soundEntity.inBullSound!!).id
+                    inBullButtonBackGrounds[targetId]!!.postValue(R.drawable.square_button2_selector)
+                }
+            }
     }
 
     fun onClickBullButton(id: Int) {

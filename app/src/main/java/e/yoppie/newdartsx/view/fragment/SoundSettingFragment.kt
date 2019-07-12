@@ -19,6 +19,7 @@ class SoundSettingFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         soundSettingViewModel = ViewModelProviders.of(this).get(SoundSettingViewModel::class.java)
+        soundSettingViewModel.initView(context!!)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

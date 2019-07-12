@@ -3,7 +3,6 @@ package e.yoppie.newdartsx.model.room.entity
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
-import e.yoppie.newdartsx.R
 
 @Entity
 class SoundEntity {
@@ -17,10 +16,10 @@ class SoundEntity {
     var othersFlag: Boolean? = false
 
     @ColumnInfo(name = "bullSound")
-    var bullSound: Int? = R.raw.bull_sound1
+    var bullSound: Int? = 0
 
     @ColumnInfo(name = "inBullSound")
-    var inBullSound: Int? = R.raw.bull_sound1
+    var inBullSound: Int? = 0
 
     companion object {
         fun create() = SoundEntity()
