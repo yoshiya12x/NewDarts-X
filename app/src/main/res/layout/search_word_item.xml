@@ -3,17 +3,33 @@
 
     <data>
         <variable name="searchWordItemViewModel" type="e.yoppie.newdartsx.viewmodel.SearchWordItemViewModel"/>
+        <variable name="searchWordSettingViewModel" type="e.yoppie.newdartsx.viewmodel.SearchWordSettingViewModel"/>
     </data>
 
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="40dp"
+            android:layout_margin="@dimen/common_margin">
 
         <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/delSearchWordButton"
                 android:textColor="@android:color/white"
+                android:textSize="@dimen/setting_search_word"
                 android:text="@{searchWordItemViewModel.text}"/>
+
+        <Button
+                android:id="@+id/delSearchWordButton"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:text="@string/search_words_setting_del_button"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/del_setting_search_word_button"
+                android:background="@android:color/black"
+                android:layout_alignParentEnd="true"
+                android:onClick="@{() -> searchWordSettingViewModel.remove(searchWordItemViewModel)}"/>
 
     </RelativeLayout>
 </layout>

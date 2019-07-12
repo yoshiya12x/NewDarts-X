@@ -15,7 +15,7 @@ import e.yoppie.newdartsx.view.viewHolder.SearchWordViewHolder
 import e.yoppie.newdartsx.viewmodel.SearchWordItemViewModel
 import e.yoppie.newdartsx.viewmodel.SearchWordSettingViewModel
 
-class SearchWordRecyclerAdapter(private val context: Fragment, viewModel: SearchWordSettingViewModel) :
+class SearchWordRecyclerAdapter(private val context: Fragment, private val viewModel: SearchWordSettingViewModel) :
     RecyclerView.Adapter<SearchWordViewHolder>() {
 
     private var items: MutableList<SearchWordModel> = mutableListOf()
@@ -29,6 +29,7 @@ class SearchWordRecyclerAdapter(private val context: Fragment, viewModel: Search
         val binding =
             DataBindingUtil.inflate<SearchWordItemBinding>(layoutInflater, R.layout.search_word_item, parent, false)
         binding.lifecycleOwner = context
+        binding.searchWordSettingViewModel = viewModel
         return SearchWordViewHolder(binding)
     }
 

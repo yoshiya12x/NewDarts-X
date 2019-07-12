@@ -4,6 +4,8 @@
     <dimen name="app_title_size">90sp</dimen>
     <dimen name="top_button_size">36sp</dimen>
     <dimen name="setting_button_text">40sp</dimen>
+    <dimen name="setting_search_word">20sp</dimen>
+    <dimen name="del_setting_search_word_button">30sp</dimen>
     <!--padding-->
     <dimen name="common_padding">16dp</dimen>
     <!--margin-->

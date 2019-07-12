@@ -22,9 +22,15 @@ class SearchWordsFragment : Fragment() {
         super.onCreate(savedInstanceState)
         searchWordSettingViewModel = ViewModelProviders.of(this).get(SearchWordSettingViewModel::class.java)
         val searchWordList = mutableListOf(
-            SearchWordModel(0, "a"),
-            SearchWordModel(1, "b"),
-            SearchWordModel(2, "c")
+            SearchWordModel(0, "X JAPAN"),
+            SearchWordModel(1, "コナン"),
+            SearchWordModel(2, "ドロイド君"),
+            SearchWordModel(3, "ドロイド君"),
+            SearchWordModel(4, "ドロイド君"),
+            SearchWordModel(5, "ドロイド君"),
+            SearchWordModel(6, "ドロイド君"),
+            SearchWordModel(7, "ドロイド君"),
+            SearchWordModel(8, "ドロイド君")
         )
         searchWordSettingViewModel.set(searchWordList)
     }
