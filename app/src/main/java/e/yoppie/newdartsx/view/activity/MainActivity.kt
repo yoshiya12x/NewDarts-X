@@ -26,26 +26,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // BGM START!!
-//        val intentBgm = Intent(application, BgmService::class.java)
-//        intentBgm.putExtra("REQUEST_CODE", 1)
-//        startForegroundService(intentBgm)
-
         Animation.emphasize(this, nob_game)
         Animation.emphasize(this, bull_game)
 
-        val sound = Sound(this, R.raw.button_sound)
+        val bottonSound = Sound(this, R.raw.button_sound)
         nob_game.clicks().subscribe {
-            sound.play()
+            if(soundEntity != null && soundEntity!!.othersFlag!!) bottonSound.play()
         }
         bull_game.clicks().subscribe {
-            sound.play()
+            if(soundEntity != null && soundEntity!!.othersFlag!!) bottonSound.play()
         }
         setting_button.clicks().subscribe {
             val intent = Intent(this, SettingActivity::class.java)
             startActivity(intent)
         }
 
+        initSound()
         initStetho()
     }
 
@@ -64,9 +60,26 @@ class MainActivity : AppCompatActivity() {
             .fromAction { soundEntity = soundRepository.getSavedSound(this) }
             .subscribeOn(Schedulers.io())
             .subscribe {
-                if (soundEntity == null) {
-
-                }
+                if (soundEntity == null) initialSound()
+                else playBgm()
             }
+    }
+
+    @SuppressLint("CheckResult")
+    private fun initialSound() {
+        Completable
+            .fromAction {
+                soundEntity = SoundEntity.create()
+                soundRepository.insertSearchWord(this, soundEntity!!)
+            }
+            .subscribeOn(Schedulers.io())
+            .subscribe { playBgm() }
+    }
+
+    private fun playBgm() {
+        if (!soundEntity!!.bgmFlag!!) return
+        val intentBgm = Intent(application, BgmService::class.java)
+        intentBgm.putExtra("REQUEST_CODE", 1)
+        startForegroundService(intentBgm)
     }
 }
