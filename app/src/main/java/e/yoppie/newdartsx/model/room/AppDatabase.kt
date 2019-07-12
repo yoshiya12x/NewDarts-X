@@ -1,0 +1,29 @@
+package e.yoppie.newdartsx.model.room
+
+import android.arch.persistence.room.Database
+import android.arch.persistence.room.Room
+import android.arch.persistence.room.RoomDatabase
+import android.content.Context
+import e.yoppie.newdartsx.model.room.dao.SearchWordDao
+import e.yoppie.newdartsx.model.room.entity.SearchWordEntity
+
+@Database(entities = [SearchWordEntity::class], version = 1)
+abstract class AppDatabase : RoomDatabase() {
+    abstract fun companyDao(): SearchWordDao
+
+    companion object {
+        private var INSTANCE: AppDatabase? = null
+
+        fun getInstance(context: Context): AppDatabase? {
+            if (INSTANCE == null) {
+                synchronized(AppDatabase::class) {
+                    INSTANCE = Room.databaseBuilder(context.applicationContext,
+                        AppDatabase::class.java, "AppDatabase.db")
+                        .fallbackToDestructiveMigration()
+                        .build()
+                }
+            }
+            return INSTANCE
+        }
+    }
+}
