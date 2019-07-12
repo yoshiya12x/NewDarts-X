@@ -12,7 +12,6 @@ import android.view.ViewGroup
 import com.jakewharton.rxbinding2.view.clicks
 import e.yoppie.newdartsx.R
 import e.yoppie.newdartsx.databinding.SearchWordsSettingFragmentBinding
-import e.yoppie.newdartsx.model.SearchWordModel
 import e.yoppie.newdartsx.view.adapter.SearchWordRecyclerAdapter
 import e.yoppie.newdartsx.viewmodel.SearchWordSettingViewModel
 
@@ -23,12 +22,7 @@ class SearchWordsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         searchWordSettingViewModel = ViewModelProviders.of(this).get(SearchWordSettingViewModel::class.java)
-        val searchWordList = mutableListOf(
-            SearchWordModel(0, "X JAPAN"),
-            SearchWordModel(1, "コナン"),
-            SearchWordModel(2, "ドロイド君")
-        )
-        searchWordSettingViewModel.set(searchWordList)
+        searchWordSettingViewModel.set(context!!)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -62,7 +56,7 @@ class SearchWordsFragment : Fragment() {
             .clicks()
             .filter { binding.userNameEditText.text.toString().isNotBlank() }
             .subscribe {
-                searchWordSettingViewModel.add(binding.userNameEditText.text.toString())
+                searchWordSettingViewModel.add(binding.userNameEditText.text.toString(), context!!)
                 binding.searchWordRecyclerView.scrollToPosition(0)
             }
         return binding

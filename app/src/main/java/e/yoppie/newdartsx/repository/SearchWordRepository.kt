@@ -18,6 +18,6 @@ class SearchWordRepository {
 
     fun insertSearchWord(context: Context, target: SearchWordEntity){
         val db = AppDatabase.getInstance(context)!!
-        return db.searchWordDao().insertItem(target)
+        db.searchWordDao().insertItem(target)
     }
 }
