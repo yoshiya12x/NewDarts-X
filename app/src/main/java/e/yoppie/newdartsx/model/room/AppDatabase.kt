@@ -9,7 +9,7 @@ import e.yoppie.newdartsx.model.room.entity.SearchWordEntity
 
 @Database(entities = [SearchWordEntity::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun companyDao(): SearchWordDao
+    abstract fun searchWordDao(): SearchWordDao
 
     companion object {
         private var INSTANCE: AppDatabase? = null
