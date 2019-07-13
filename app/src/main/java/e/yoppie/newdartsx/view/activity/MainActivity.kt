@@ -29,12 +29,12 @@ class MainActivity : AppCompatActivity() {
         Animation.emphasize(this, nob_game)
         Animation.emphasize(this, bull_game)
 
-        val bottonSound = Sound(this, R.raw.button_sound)
+        val buttonSound = Sound(this, R.raw.button_sound)
         nob_game.clicks().subscribe {
-            if(soundEntity != null && soundEntity!!.othersFlag!!) bottonSound.play()
+            if(soundEntity != null && soundEntity!!.othersFlag!!) buttonSound.play()
         }
         bull_game.clicks().subscribe {
-            if(soundEntity != null && soundEntity!!.othersFlag!!) bottonSound.play()
+            if(soundEntity != null && soundEntity!!.othersFlag!!) buttonSound.play()
         }
         setting_button.clicks().subscribe {
             val intent = Intent(this, SettingActivity::class.java)
@@ -42,8 +42,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         soundRepository = SoundRepository(this)
-        initSound()
         initStetho()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        initSound()
     }
 
     private fun initStetho() {
