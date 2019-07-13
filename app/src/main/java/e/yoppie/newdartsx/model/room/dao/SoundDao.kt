@@ -22,4 +22,7 @@ interface SoundDao {
 
     @Query("UPDATE SoundEntity SET inBullSound = :inBullSound")
     fun updateInBullSound(inBullSound: Int)
+
+    @Update
+    fun updateItem(entity: SoundEntity)
 }

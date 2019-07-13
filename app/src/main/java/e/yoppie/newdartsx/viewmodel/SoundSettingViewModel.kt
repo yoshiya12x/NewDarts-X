@@ -114,12 +114,24 @@ class SoundSettingViewModel : ViewModel() {
         ) isAllSwitchChecked.postValue(true)
     }
 
-    fun onClickSwitch(view: View) {
+    fun onClickSwitch(view: View, context: Context) {
         when (view.id) {
             R.id.all_switch -> {
                 if (isAllSwitchChecked.value!!) {
                     bullButtonBackGrounds.forEach { it.value.postValue(R.drawable.square_button_selector) }
                     inBullButtonBackGrounds.forEach { it.value.postValue(R.drawable.square_button_selector) }
+                    Completable
+                        .fromAction {
+                            val updateEntity = SoundEntity()
+                            updateEntity.id = 1
+                            updateEntity.bgmFlag = false
+                            updateEntity.bullSound = 0
+                            updateEntity.inBullSound = 0
+                            updateEntity.othersFlag = false
+                            soundRepository.updateAll(context, updateEntity)
+                        }
+                        .subscribeOn(Schedulers.io())
+                        .subscribe { Log.d("yoppie_debug", "all updated") }
                 } else {
                     bullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)
                     inBullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)

@@ -36,4 +36,8 @@ class SoundRepository {
         db.soundDao().updateInBullSound(inBullSound)
     }
 
+    fun updateAll(context: Context, target: SoundEntity){
+        val db = AppDatabase.getInstance(context)!!
+        db.soundDao().updateItem(target)
+    }
 }
