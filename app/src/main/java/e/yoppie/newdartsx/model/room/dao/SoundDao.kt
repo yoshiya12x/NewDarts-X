@@ -11,6 +11,15 @@ interface SoundDao {
     @Query("SELECT * FROM SoundEntity LIMIT 1")
     fun findItem(): SoundEntity
 
-    @Update
-    fun updateItem(entity: SoundEntity)
+    @Query("UPDATE SoundEntity SET bgmFlag = :bgmFlag")
+    fun updateBgmFlag(bgmFlag: Boolean)
+
+    @Query("UPDATE SoundEntity SET othersFlag = :othersFlag")
+    fun updateOthersFlag(othersFlag: Boolean)
+
+    @Query("UPDATE SoundEntity SET bullSound = :bullSound")
+    fun updateBullSound(bullSound: Int)
+
+    @Query("UPDATE SoundEntity SET inBullSound = :inBullSound")
+    fun updateInBullSound(inBullSound: Int)
 }

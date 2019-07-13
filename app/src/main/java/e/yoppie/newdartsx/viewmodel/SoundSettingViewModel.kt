@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.content.Context
+import android.util.Log
 import android.view.View
 import e.yoppie.newdartsx.R
 import e.yoppie.newdartsx.model.SoundModel
@@ -60,23 +61,47 @@ class SoundSettingViewModel : ViewModel() {
                     val targetId = SoundModel.forSoundId(soundEntity.inBullSound!!).id
                     inBullButtonBackGrounds[targetId]!!.postValue(R.drawable.square_button2_selector)
                 }
+                if (soundEntity.bgmFlag!!
+                    && soundEntity.othersFlag!!
+                    && soundEntity.bullSound != 0
+                    && soundEntity.inBullSound != 0
+                ) { isAllSwitchChecked.postValue(true) }
             }
     }
 
-    fun onClickBullButton(id: Int) {
+    @SuppressLint("CheckResult")
+    fun onClickBullButton(id: Int, context: Context) {
+        Completable
+            .fromAction {
+                val bullSound = SoundModel.forId(id).soundId
+                soundRepository.updateBullSound(context, bullSound)
+            }
+            .subscribeOn(Schedulers.io())
+            .subscribe { Log.d("yoppie_debug", "bull sound updated") }
+
         bullSoundHandler()
         isBullSwitchChecked.postValue(true)
         bullButtonBackGrounds.forEach {
             if (id == it.key) it.value.postValue(R.drawable.square_button2_selector)
             else it.value.postValue(R.drawable.square_button_selector)
         }
+
         if (isBgmSwitchChecked.value!!
             && isInBullSwitchChecked.value!!
             && isOthersSwitchChecked.value!!
         ) isAllSwitchChecked.postValue(true)
     }
 
-    fun onClickInBullButton(id: Int) {
+    @SuppressLint("CheckResult")
+    fun onClickInBullButton(id: Int, context: Context) {
+        Completable
+            .fromAction {
+                val bullSound = SoundModel.forId(id).soundId
+                soundRepository.updateInBullSound(context, bullSound)
+            }
+            .subscribeOn(Schedulers.io())
+            .subscribe { Log.d("yoppie_debug", "inBull sound updated") }
+
         inBullSoundHandler()
         isInBullSwitchChecked.postValue(true)
         inBullButtonBackGrounds.forEach {

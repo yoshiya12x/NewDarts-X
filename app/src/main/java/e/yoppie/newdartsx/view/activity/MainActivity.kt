@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         Completable
             .fromAction {
                 soundEntity = SoundEntity.create()
-                soundRepository.insertSearchWord(this, soundEntity!!)
+                soundRepository.insertSound(this, soundEntity!!)
             }
             .subscribeOn(Schedulers.io())
             .subscribe { playBgm() }
