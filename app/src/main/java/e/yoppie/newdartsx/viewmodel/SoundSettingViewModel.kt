@@ -4,11 +4,14 @@ import android.annotation.SuppressLint
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.content.Context
+import android.content.Intent
 import android.view.View
 import e.yoppie.newdartsx.R
 import e.yoppie.newdartsx.model.SoundModel
 import e.yoppie.newdartsx.model.room.entity.SoundEntity
 import e.yoppie.newdartsx.repository.SoundRepository
+import e.yoppie.newdartsx.service.BgmService
+import e.yoppie.newdartsx.util.Bgm
 import io.reactivex.Completable
 import io.reactivex.schedulers.Schedulers
 
@@ -118,6 +121,7 @@ class SoundSettingViewModel : ViewModel() {
                     updateEntity.inBullSound = 0
                     updateEntity.othersFlag = false
                     soundRepository.updateAll(updateEntity)
+                    Bgm.stop(context)
                 } else {
                     if (!isBullSwitchChecked.value!!) {
                         bullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)
@@ -127,6 +131,7 @@ class SoundSettingViewModel : ViewModel() {
                         inBullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)
                         soundRepository.updateInBullSound(SoundModel.forId(1).soundId)
                     }
+                    Bgm.start(context)
                 }
 
                 soundRepository.updateBgmFlag(!isAllSwitchChecked.value!!)
@@ -144,8 +149,10 @@ class SoundSettingViewModel : ViewModel() {
                         && isInBullSwitchChecked.value!!
                         && isOthersSwitchChecked.value!!
                     ) isAllSwitchChecked.postValue(true)
+                    Bgm.start(context)
                 } else {
                     isAllSwitchChecked.postValue(false)
+                    Bgm.stop(context)
                 }
                 soundRepository.updateBgmFlag(!isBgmSwitchChecked.value!!)
                 isBgmSwitchChecked.postValue(!isBgmSwitchChecked.value!!)

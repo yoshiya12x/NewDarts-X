@@ -11,6 +11,7 @@ import e.yoppie.newdartsx.model.room.entity.SoundEntity
 import e.yoppie.newdartsx.repository.SoundRepository
 import e.yoppie.newdartsx.service.BgmService
 import e.yoppie.newdartsx.util.Animation
+import e.yoppie.newdartsx.util.Bgm
 import e.yoppie.newdartsx.util.Sound
 import io.reactivex.Completable
 import io.reactivex.schedulers.Schedulers
@@ -83,8 +84,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun playBgm() {
         if (!soundEntity!!.bgmFlag!!) return
-        val intentBgm = Intent(application, BgmService::class.java)
-        intentBgm.putExtra("REQUEST_CODE", 1)
-        startForegroundService(intentBgm)
+        Bgm.start(applicationContext)
     }
 }
