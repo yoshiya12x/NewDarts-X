@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val soundRepository = SoundRepository()
+    private lateinit var soundRepository: SoundRepository
     private var soundEntity: SoundEntity? = null
 
     @SuppressLint("CheckResult")
@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        soundRepository = SoundRepository(this)
         initSound()
         initStetho()
     }
@@ -57,7 +58,7 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("CheckResult")
     private fun initSound() {
         Completable
-            .fromAction { soundEntity = soundRepository.getSavedSound(this) }
+            .fromAction { soundEntity = soundRepository.getSavedSound() }
             .subscribeOn(Schedulers.io())
             .subscribe {
                 if (soundEntity == null) initialSound()

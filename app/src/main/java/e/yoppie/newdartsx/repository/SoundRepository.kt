@@ -1,13 +1,17 @@
 package e.yoppie.newdartsx.repository
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import e.yoppie.newdartsx.model.room.AppDatabase
 import e.yoppie.newdartsx.model.room.entity.SoundEntity
+import io.reactivex.Completable
+import io.reactivex.schedulers.Schedulers
 
-class SoundRepository {
+class SoundRepository(context: Context) {
+    private val db: AppDatabase = AppDatabase.getInstance(context)!!
 
-    fun getSavedSound(context: Context): SoundEntity {
-        val db = AppDatabase.getInstance(context)!!
+    fun getSavedSound(): SoundEntity {
         return db.soundDao().findItem()
     }
 
@@ -16,28 +20,44 @@ class SoundRepository {
         db.soundDao().insertItem(target)
     }
 
-    fun updateBgmFlag(context: Context, bgmFlag: Boolean) {
-        val db = AppDatabase.getInstance(context)!!
-        db.soundDao().updateBgmFlag(bgmFlag)
+    @SuppressLint("CheckResult")
+    fun updateBgmFlag(bgmFlag: Boolean) {
+        Completable
+            .fromAction { db.soundDao().updateBgmFlag(bgmFlag) }
+            .subscribeOn(Schedulers.io())
+            .subscribe { Log.d("yoppie_debug", "bgm flag updated") }
     }
 
-    fun updateOthersFlag(context: Context, othersFlag: Boolean) {
-        val db = AppDatabase.getInstance(context)!!
-        db.soundDao().updateOthersFlag(othersFlag)
+    @SuppressLint("CheckResult")
+    fun updateOthersFlag(othersFlag: Boolean) {
+        Completable
+            .fromAction { db.soundDao().updateOthersFlag(othersFlag) }
+            .subscribeOn(Schedulers.io())
+            .subscribe { Log.d("yoppie_debug", "others flag updated") }
     }
 
-    fun updateBullSound(context: Context, bullSound: Int) {
-        val db = AppDatabase.getInstance(context)!!
-        db.soundDao().updateBullSound(bullSound)
+    @SuppressLint("CheckResult")
+    fun updateBullSound(bullSound: Int) {
+        Completable
+            .fromAction { db.soundDao().updateBullSound(bullSound) }
+            .subscribeOn(Schedulers.io())
+            .subscribe { Log.d("yoppie_debug", "bull sound updated") }
     }
 
-    fun updateInBullSound(context: Context, inBullSound: Int) {
-        val db = AppDatabase.getInstance(context)!!
-        db.soundDao().updateInBullSound(inBullSound)
+    @SuppressLint("CheckResult")
+    fun updateInBullSound(inBullSound: Int) {
+        Completable
+            .fromAction { db.soundDao().updateInBullSound(inBullSound) }
+            .subscribeOn(Schedulers.io())
+            .subscribe { Log.d("yoppie_debug", "inBull sound updated") }
     }
 
-    fun updateAll(context: Context, target: SoundEntity){
-        val db = AppDatabase.getInstance(context)!!
-        db.soundDao().updateItem(target)
+    @SuppressLint("CheckResult")
+    fun updateAll(target: SoundEntity){
+        Completable
+            .fromAction { db.soundDao().updateItem(target) }
+            .subscribeOn(Schedulers.io())
+            .subscribe { Log.d("yoppie_debug", "all sound updated") }
+
     }
 }

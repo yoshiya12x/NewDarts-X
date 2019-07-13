@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.content.Context
-import android.util.Log
 import android.view.View
 import e.yoppie.newdartsx.R
 import e.yoppie.newdartsx.model.SoundModel
@@ -15,7 +14,6 @@ import io.reactivex.schedulers.Schedulers
 
 class SoundSettingViewModel : ViewModel() {
 
-    private val soundRepository = SoundRepository()
     val isAllSwitchChecked: MutableLiveData<Boolean> = MutableLiveData()
     val isBgmSwitchChecked: MutableLiveData<Boolean> = MutableLiveData()
     val isBullSwitchChecked: MutableLiveData<Boolean> = MutableLiveData()
@@ -45,8 +43,9 @@ class SoundSettingViewModel : ViewModel() {
     @SuppressLint("CheckResult")
     fun initView(context: Context) {
         var soundEntity = SoundEntity()
+        val soundRepository = SoundRepository(context)
         Completable
-            .fromAction { soundEntity = soundRepository.getSavedSound(context) }
+            .fromAction { soundEntity = soundRepository.getSavedSound() }
             .subscribeOn(Schedulers.io())
             .subscribe {
                 isBgmSwitchChecked.postValue(soundEntity.bgmFlag)
@@ -65,20 +64,16 @@ class SoundSettingViewModel : ViewModel() {
                     && soundEntity.othersFlag!!
                     && soundEntity.bullSound != 0
                     && soundEntity.inBullSound != 0
-                ) { isAllSwitchChecked.postValue(true) }
+                ) {
+                    isAllSwitchChecked.postValue(true)
+                }
             }
     }
 
     @SuppressLint("CheckResult")
     fun onClickBullButton(id: Int, context: Context) {
-        Completable
-            .fromAction {
-                val bullSound = SoundModel.forId(id).soundId
-                soundRepository.updateBullSound(context, bullSound)
-            }
-            .subscribeOn(Schedulers.io())
-            .subscribe { Log.d("yoppie_debug", "bull sound updated") }
-
+        val soundRepository = SoundRepository(context)
+        soundRepository.updateBullSound(SoundModel.forId(id).soundId)
         bullSoundHandler()
         isBullSwitchChecked.postValue(true)
         bullButtonBackGrounds.forEach {
@@ -94,14 +89,8 @@ class SoundSettingViewModel : ViewModel() {
 
     @SuppressLint("CheckResult")
     fun onClickInBullButton(id: Int, context: Context) {
-        Completable
-            .fromAction {
-                val bullSound = SoundModel.forId(id).soundId
-                soundRepository.updateInBullSound(context, bullSound)
-            }
-            .subscribeOn(Schedulers.io())
-            .subscribe { Log.d("yoppie_debug", "inBull sound updated") }
-
+        val soundRepository = SoundRepository(context)
+        soundRepository.updateInBullSound(SoundModel.forId(id).soundId)
         inBullSoundHandler()
         isInBullSwitchChecked.postValue(true)
         inBullButtonBackGrounds.forEach {
@@ -114,28 +103,35 @@ class SoundSettingViewModel : ViewModel() {
         ) isAllSwitchChecked.postValue(true)
     }
 
+    @SuppressLint("CheckResult")
     fun onClickSwitch(view: View, context: Context) {
+        val soundRepository = SoundRepository(context)
         when (view.id) {
             R.id.all_switch -> {
                 if (isAllSwitchChecked.value!!) {
                     bullButtonBackGrounds.forEach { it.value.postValue(R.drawable.square_button_selector) }
                     inBullButtonBackGrounds.forEach { it.value.postValue(R.drawable.square_button_selector) }
-                    Completable
-                        .fromAction {
-                            val updateEntity = SoundEntity()
-                            updateEntity.id = 1
-                            updateEntity.bgmFlag = false
-                            updateEntity.bullSound = 0
-                            updateEntity.inBullSound = 0
-                            updateEntity.othersFlag = false
-                            soundRepository.updateAll(context, updateEntity)
-                        }
-                        .subscribeOn(Schedulers.io())
-                        .subscribe { Log.d("yoppie_debug", "all updated") }
+                    val updateEntity = SoundEntity()
+                    updateEntity.id = 1
+                    updateEntity.bgmFlag = false
+                    updateEntity.bullSound = 0
+                    updateEntity.inBullSound = 0
+                    updateEntity.othersFlag = false
+                    soundRepository.updateAll(updateEntity)
                 } else {
-                    bullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)
-                    inBullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)
+                    if (!isBullSwitchChecked.value!!) {
+                        bullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)
+                        soundRepository.updateBullSound(SoundModel.forId(1).soundId)
+                    }
+                    if (!isInBullSwitchChecked.value!!) {
+                        inBullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)
+                        soundRepository.updateInBullSound(SoundModel.forId(1).soundId)
+                    }
                 }
+
+                soundRepository.updateBgmFlag(!isAllSwitchChecked.value!!)
+                soundRepository.updateOthersFlag(!isAllSwitchChecked.value!!)
+
                 isAllSwitchChecked.postValue(!isAllSwitchChecked.value!!)
                 isBgmSwitchChecked.postValue(!isAllSwitchChecked.value!!)
                 isBullSwitchChecked.postValue(!isAllSwitchChecked.value!!)
@@ -151,10 +147,12 @@ class SoundSettingViewModel : ViewModel() {
                 } else {
                     isAllSwitchChecked.postValue(false)
                 }
+                soundRepository.updateBgmFlag(!isBgmSwitchChecked.value!!)
                 isBgmSwitchChecked.postValue(!isBgmSwitchChecked.value!!)
             }
             R.id.bull_switch -> {
                 if (!isBullSwitchChecked.value!!) {
+                    soundRepository.updateBullSound(SoundModel.forId(1).soundId)
                     bullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)
                     if (isBgmSwitchChecked.value!!
                         && isInBullSwitchChecked.value!!
@@ -168,6 +166,7 @@ class SoundSettingViewModel : ViewModel() {
             }
             R.id.in_bull_switch -> {
                 if (!isInBullSwitchChecked.value!!) {
+                    soundRepository.updateInBullSound(SoundModel.forId(1).soundId)
                     inBullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)
                     if (isBgmSwitchChecked.value!!
                         && isBullSwitchChecked.value!!
@@ -188,6 +187,7 @@ class SoundSettingViewModel : ViewModel() {
                 } else {
                     isAllSwitchChecked.postValue(false)
                 }
+                soundRepository.updateOthersFlag(!isOthersSwitchChecked.value!!)
                 isOthersSwitchChecked.postValue(!isOthersSwitchChecked.value!!)
             }
         }
