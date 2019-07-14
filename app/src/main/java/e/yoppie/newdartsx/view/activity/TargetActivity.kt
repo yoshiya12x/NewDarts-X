@@ -1,10 +1,12 @@
 package e.yoppie.newdartsx.view.activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
+import com.jakewharton.rxbinding2.view.clicks
 import e.yoppie.newdartsx.R
 import e.yoppie.newdartsx.model.room.entity.EffectEntity
 import e.yoppie.newdartsx.model.room.entity.SoundEntity
@@ -27,13 +29,22 @@ class TargetActivity : AppCompatActivity() {
     private var effectEntity: EffectEntity? = null
     private var bullCount = 0
     private var inBullCount = 0
+    private var allCount = 0
 
+    @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_target)
-
         val searchWord = intent.getStringExtra("searchWord")
-        Log.d("yoppie_debug", searchWord)
+
+        arrowFloatingActionButton.clicks().subscribe {
+            val intent = Intent(this, ResultActivity::class.java)
+            intent.putExtra("bullCount", bullCount)
+            intent.putExtra("inBullCount", inBullCount)
+            intent.putExtra("allCount", allCount)
+            startActivity(intent)
+        }
+
         soundRepository = SoundRepository(this)
         effectRepository = EffectRepository(this)
         loadSound()
@@ -53,6 +64,7 @@ class TargetActivity : AppCompatActivity() {
 
         val score = if (isPreCode) scoreManagement.convertPreCode() else scoreManagement.convert()
         playAward(score)
+        allCount ++
         isPreCode = false
 
         return super.dispatchKeyEvent(event)
