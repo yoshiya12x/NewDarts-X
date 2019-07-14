@@ -4,8 +4,8 @@
     <string name="app_name_part2">X</string>
     <string name="bull">BULL</string>
     <string name="in_bull">IN-BULL</string>
-    <string name="bull_game">BULL GAME</string>
-    <string name="nob_game">NOB GAME</string>
+    <string name="bull_game">BULL</string>
+    <string name="nob_game">NOBE</string>
     <string name="setting_button">SETTING</string>
     <string name="setting_button_text">≡</string>
     <string name="sound_setting_all">ALL</string>
@@ -14,4 +14,5 @@
     <string name="search_words_setting_input_word">input word</string>
     <string name="search_words_setting_add">add</string>
     <string name="search_words_setting_del_button">×</string>
+    <string name="game_target">TARGET</string>
 </resources>

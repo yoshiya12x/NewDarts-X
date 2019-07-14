@@ -58,25 +58,27 @@
             android:id="@+id/nob_game"
             android:textColor="@color/colorPrimary"
             android:background="@drawable/square_button_selector"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="70dp"
             android:text="@string/nob_game"
             android:textSize="@dimen/top_button_size"
             android:layout_margin="@dimen/common_margin"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/bull_game"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/bull_game"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread"/>
 
     <Button
             android:id="@+id/bull_game"
             android:textColor="@color/colorPrimary"
             android:background="@drawable/square_button_selector"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="70dp"
             android:text="@string/bull_game"
             android:textSize="@dimen/top_button_size"
             android:layout_margin="@dimen/common_margin"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/nob_game"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
