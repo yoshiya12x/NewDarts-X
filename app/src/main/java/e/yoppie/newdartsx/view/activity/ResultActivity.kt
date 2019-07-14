@@ -20,7 +20,7 @@ class ResultActivity : AppCompatActivity() {
     private lateinit var soundRepository: SoundRepository
     private var soundEntity: SoundEntity? = null
 
-    @SuppressLint("SetTextI18n", "CheckResult")
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
@@ -30,11 +30,15 @@ class ResultActivity : AppCompatActivity() {
         val bullCount = intent.getIntExtra("bullCount", 0)
         val inBullCount = intent.getIntExtra("inBullCount", 0)
         val allCount = intent.getIntExtra("allCount", 0)
-
         bullScoreTextView.text = "$bullCount/$allCount"
         inBullScoreTextView.text = "$inBullCount/$allCount"
         Animation.emphasize(this, againButton)
 
+        initButtons()
+    }
+
+    @SuppressLint("CheckResult")
+    private fun initButtons(){
         val buttonSound = Sound(this, R.raw.button_sound)
         closeButton.clicks().subscribe {
             if(soundEntity != null && soundEntity!!.othersFlag!!) buttonSound.play()
