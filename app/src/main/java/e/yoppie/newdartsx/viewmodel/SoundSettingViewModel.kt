@@ -71,7 +71,6 @@ class SoundSettingViewModel : ViewModel() {
             }
     }
 
-    @SuppressLint("CheckResult")
     fun onClickBullButton(id: Int, context: Context) {
         val soundRepository = SoundRepository(context)
         soundRepository.updateBullSound(SoundModel.forId(id).soundId)
@@ -88,7 +87,6 @@ class SoundSettingViewModel : ViewModel() {
         ) isAllSwitchChecked.postValue(true)
     }
 
-    @SuppressLint("CheckResult")
     fun onClickInBullButton(id: Int, context: Context) {
         val soundRepository = SoundRepository(context)
         soundRepository.updateInBullSound(SoundModel.forId(id).soundId)
@@ -104,7 +102,6 @@ class SoundSettingViewModel : ViewModel() {
         ) isAllSwitchChecked.postValue(true)
     }
 
-    @SuppressLint("CheckResult")
     fun onClickSwitch(view: View, context: Context) {
         val soundRepository = SoundRepository(context)
         when (view.id) {

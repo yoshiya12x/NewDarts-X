@@ -84,12 +84,19 @@ enum class EffectModel(
         fun forId(id: Int): EffectModel {
             return values().first { it.id == id }
         }
+
         fun forBullButtonId(bullButtonId: Int): EffectModel {
             return values().first { it.bullButtonId == bullButtonId }
         }
+
         fun forInBullButtonId(inBullButtonId: Int): EffectModel {
             return values().first { it.inBullButtonId == inBullButtonId }
         }
+
+        fun forEffectId(effectId: Int): EffectModel {
+            return values().first { it.effectId == effectId }
+        }
+
         fun getAll(): Array<EffectModel> {
             return values()
         }

@@ -10,10 +10,10 @@ class EffectEntity {
     var id: Int = 0
 
     @ColumnInfo(name = "bullEffect")
-    var bullSound: Int? = 0
+    var bullEffect: Int? = 0
 
     @ColumnInfo(name = "inBullEffect")
-    var inBullSound: Int? = 0
+    var inBullEffect: Int? = 0
 
     companion object {
         fun create() = EffectEntity()

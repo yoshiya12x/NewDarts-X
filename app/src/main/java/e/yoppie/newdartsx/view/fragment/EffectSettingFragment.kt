@@ -1,6 +1,5 @@
 package e.yoppie.newdartsx.view.fragment
 
-import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -20,9 +19,9 @@ class EffectSettingFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         effectSettingViewModel = ViewModelProviders.of(this).get(EffectSettingViewModel::class.java)
+        effectSettingViewModel.initView(context!!)
     }
 
-    @SuppressLint("CheckResult")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         val binding = DataBindingUtil.inflate<EffectSettingFragmentBinding>(

@@ -16,23 +16,23 @@ class EffectRepository(context: Context) {
     fun insertEffect(target: EffectEntity) = db.effectDao().insertItem(target)
 
     @SuppressLint("CheckResult")
-    fun updateBullEffect(bullEffect: Int){
+    fun updateBullEffect(bullEffect: Int, handler: () -> Unit) {
         Completable
             .fromAction { db.effectDao().updateBullSound(bullEffect) }
             .subscribeOn(Schedulers.io())
-            .subscribe { Log.d("yoppie_debug", "bull effect updated") }
+            .subscribe { handler() }
     }
 
     @SuppressLint("CheckResult")
-    fun updateInBullEffect(inBullEffect: Int){
+    fun updateInBullEffect(inBullEffect: Int, handler: () -> Unit) {
         Completable
             .fromAction { db.effectDao().updateInBullSound(inBullEffect) }
             .subscribeOn(Schedulers.io())
-            .subscribe { Log.d("yoppie_debug", "inBull effect updated") }
+            .subscribe { handler() }
     }
 
     @SuppressLint("CheckResult")
-    fun updateAll(target: EffectEntity){
+    fun updateAll(target: EffectEntity) {
         Completable
             .fromAction { db.effectDao().updateItem(target) }
             .subscribeOn(Schedulers.io())

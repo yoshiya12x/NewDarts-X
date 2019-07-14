@@ -17,7 +17,7 @@ interface SoundDao {
     @Query("UPDATE SoundEntity SET othersFlag = :othersFlag")
     fun updateOthersFlag(othersFlag: Boolean)
 
-    @Query("UPDATE SoundEntity SET bullSound = :bullSound")
+    @Query("UPDATE SoundEntity SET bullEffect = :bullSound")
     fun updateBullSound(bullSound: Int)
 
     @Query("UPDATE SoundEntity SET inBullSound = :inBullSound")
