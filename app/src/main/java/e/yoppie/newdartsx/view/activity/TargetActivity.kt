@@ -10,17 +10,23 @@ import e.yoppie.newdartsx.model.room.entity.EffectEntity
 import e.yoppie.newdartsx.model.room.entity.SoundEntity
 import e.yoppie.newdartsx.repository.EffectRepository
 import e.yoppie.newdartsx.repository.SoundRepository
+import e.yoppie.newdartsx.util.Animation
 import e.yoppie.newdartsx.util.ScoreManagement
+import e.yoppie.newdartsx.util.Sound
 import io.reactivex.Completable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.activity_target.*
 
 class TargetActivity : AppCompatActivity() {
 
     private var isPreCode = false
     private lateinit var soundRepository: SoundRepository
     private lateinit var effectRepository: EffectRepository
-    private var soundEntity: SoundEntity? = null
+    private var bullSound: Sound? = null
+    private var inBullSound: Sound? = null
     private var effectEntity: EffectEntity? = null
+    private var bullCount = 0
+    private var inBullCount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,21 +49,45 @@ class TargetActivity : AppCompatActivity() {
         }
 
         val score = if (isPreCode) scoreManagement.convertPreCode() else scoreManagement.convert()
+        playAward(score)
         isPreCode = false
 
         return super.dispatchKeyEvent(event)
     }
 
-    @SuppressLint("CheckResult")
-    private fun loadSound(){
-        Completable
-            .fromAction { soundEntity = soundRepository.getSavedSound() }
-            .subscribeOn(Schedulers.io())
-            .subscribe { Log.d("yoppie_debug", "sound loaded") }
+    private fun playAward(score: Int) {
+        when (score) {
+            50 -> {
+                if (bullSound != null) bullSound!!.play()
+                if (effectEntity!!.bullEffect != 0) {
+                    Animation.runLottieAnimation(target_parent, effectEntity!!.bullEffect!!, this)
+                }
+                bullCount ++
+            }
+            100 -> {
+                if (inBullSound != null) inBullSound!!.play()
+                if (effectEntity!!.inBullEffect != 0) {
+                    Animation.runLottieAnimation(target_parent, effectEntity!!.inBullEffect!!, this)
+                }
+                inBullCount ++
+            }
+        }
     }
 
     @SuppressLint("CheckResult")
-    private fun loadEffect(){
+    private fun loadSound() {
+        var soundEntity: SoundEntity? = null
+        Completable
+            .fromAction { soundEntity = soundRepository.getSavedSound() }
+            .subscribeOn(Schedulers.io())
+            .subscribe {
+                if (soundEntity!!.bullSound != 0) bullSound = Sound(this, soundEntity!!.bullSound!!)
+                if (soundEntity!!.inBullSound != 0) inBullSound = Sound(this, soundEntity!!.inBullSound!!)
+            }
+    }
+
+    @SuppressLint("CheckResult")
+    private fun loadEffect() {
         Completable
             .fromAction { effectEntity = effectRepository.getSavedEffect() }
             .subscribeOn(Schedulers.io())

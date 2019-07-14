@@ -53,7 +53,7 @@ class ScoreManagement(keyEvent: KeyEvent) {
         55, 44 -> 18
         48, 39 -> 19
         29, 75 -> 20
-        54 -> 50
+        54 -> 100 // InBull
         else -> 0
     }
 }
