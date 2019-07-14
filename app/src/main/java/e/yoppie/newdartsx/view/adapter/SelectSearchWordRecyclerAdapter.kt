@@ -18,8 +18,11 @@ import e.yoppie.newdartsx.view.viewHolder.SearchWordViewHolder
 import e.yoppie.newdartsx.viewmodel.SelectWordViewModel
 import e.yoppie.newdartsx.viewmodel.SettingSearchWordItemViewModel
 
-class SelectSearchWordRecyclerAdapter(private val context: AppCompatActivity, viewModel: SelectWordViewModel, val intent: Intent) :
-    RecyclerView.Adapter<SearchWordViewHolder>() {
+class SelectSearchWordRecyclerAdapter(
+    private val context: AppCompatActivity,
+    viewModel: SelectWordViewModel,
+    private val intent: Intent
+) : RecyclerView.Adapter<SearchWordViewHolder>() {
 
     private var items: MutableList<SearchWordModel> = mutableListOf()
 
