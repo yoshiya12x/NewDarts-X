@@ -8,13 +8,11 @@
         tools:context=".view.activity.ResultActivity"
         android:padding="@dimen/common_padding">
 
-    <TextView
-            android:id="@+id/topTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+    <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pie"
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
             android:layout_margin="@dimen/common_margin"
-            android:text="@string/game_select"
-            android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
@@ -25,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/common_margin"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/topTextView">
+            app:layout_constraintTop_toBottomOf="@+id/pie">
         <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
@@ -70,9 +68,9 @@
             android:textColor="@color/colorPrimary"
             android:background="@drawable/square_button_selector"
             android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_height="40dp"
             android:text="@string/game_end"
-            android:textSize="@dimen/top_button_size"
+            android:textSize="@dimen/setting_search_word"
             android:layout_margin="@dimen/common_margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/againButton"
@@ -85,9 +83,9 @@
             android:textColor="@color/colorPrimary"
             android:background="@drawable/square_button_selector"
             android:layout_width="0dp"
-            android:layout_height="70dp"
+            android:layout_height="40dp"
             android:text="@string/game_again"
-            android:textSize="@dimen/top_button_size"
+            android:textSize="@dimen/setting_search_word"
             android:layout_margin="@dimen/common_margin"
             app:layout_constraintStart_toEndOf="@id/closeButton"
             app:layout_constraintEnd_toEndOf="parent"
