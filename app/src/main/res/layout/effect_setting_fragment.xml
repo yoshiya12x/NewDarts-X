@@ -31,7 +31,7 @@
                         android:layout_margin="4dp"/>
                 <Switch
                         android:id="@+id/all_switch"
-                        android:onClick="@{(view) -> effectSettingViewModel.onClickSwitch(view)}"
+                        android:onClick="@{(view) -> effectSettingViewModel.onClickSwitch(view, context)}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="@{effectSettingViewModel.isAllSwitchChecked}"
@@ -55,7 +55,7 @@
                         android:layout_height="wrap_content">
                     <Switch
                             android:id="@+id/bull_effect_switch"
-                            android:onClick="@{(view) -> effectSettingViewModel.onClickSwitch(view)}"
+                            android:onClick="@{(view) -> effectSettingViewModel.onClickSwitch(view, context)}"
                             android:checked="@{effectSettingViewModel.isBullSwitchChecked}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
@@ -68,23 +68,23 @@
                         <Button android:id="@+id/bull_button_1" android:layout_margin="2dp" android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:text="1" app:customBackground="@{effectSettingViewModel.bullButtonBackGrounds[1]}"
-                                android:onClick="@{(view) -> effectSettingViewModel.onClickBullButton(1)}"/>
+                                android:onClick="@{(view) -> effectSettingViewModel.onClickBullButton(1, context)}"/>
                         <Button android:id="@+id/bull_button_2" android:layout_margin="2dp" android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:text="2" app:customBackground="@{effectSettingViewModel.bullButtonBackGrounds[2]}"
-                                android:onClick="@{(view) -> effectSettingViewModel.onClickBullButton(2)}"/>
+                                android:onClick="@{(view) -> effectSettingViewModel.onClickBullButton(2, context)}"/>
                         <Button android:id="@+id/bull_button_3" android:layout_margin="2dp" android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:text="3" app:customBackground="@{effectSettingViewModel.bullButtonBackGrounds[3]}"
-                                android:onClick="@{(view) -> effectSettingViewModel.onClickBullButton(3)}"/>
+                                android:onClick="@{(view) -> effectSettingViewModel.onClickBullButton(3, context)}"/>
                         <Button android:id="@+id/bull_button_4" android:layout_margin="2dp" android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:text="4" app:customBackground="@{effectSettingViewModel.bullButtonBackGrounds[4]}"
-                                android:onClick="@{(view) -> effectSettingViewModel.onClickBullButton(4)}"/>
+                                android:onClick="@{(view) -> effectSettingViewModel.onClickBullButton(4, context)}"/>
                         <Button android:id="@+id/bull_button_5" android:layout_margin="2dp" android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:text="5" app:customBackground="@{effectSettingViewModel.bullButtonBackGrounds[5]}"
-                                android:onClick="@{(view) -> effectSettingViewModel.onClickBullButton(5)}"/>
+                                android:onClick="@{(view) -> effectSettingViewModel.onClickBullButton(5, context)}"/>
                     </LinearLayout>
                     <LinearLayout
                             android:id="@+id/bull_linear_layout2"
@@ -95,23 +95,23 @@
                         <Button android:id="@+id/bull_button_6" android:layout_margin="2dp" android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:text="6" app:customBackground="@{effectSettingViewModel.bullButtonBackGrounds[6]}"
-                                android:onClick="@{(view) -> effectSettingViewModel.onClickBullButton(6)}"/>
+                                android:onClick="@{(view) -> effectSettingViewModel.onClickBullButton(6, context)}"/>
                         <Button android:id="@+id/bull_button_7" android:layout_margin="2dp" android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:text="7" app:customBackground="@{effectSettingViewModel.bullButtonBackGrounds[7]}"
-                                android:onClick="@{(view) -> effectSettingViewModel.onClickBullButton(7)}"/>
+                                android:onClick="@{(view) -> effectSettingViewModel.onClickBullButton(7, context)}"/>
                         <Button android:id="@+id/bull_button_8" android:layout_margin="2dp" android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:text="8" app:customBackground="@{effectSettingViewModel.bullButtonBackGrounds[8]}"
-                                android:onClick="@{(view) -> effectSettingViewModel.onClickBullButton(8)}"/>
+                                android:onClick="@{(view) -> effectSettingViewModel.onClickBullButton(8, context)}"/>
                         <Button android:id="@+id/bull_button_9" android:layout_margin="2dp" android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:text="9" app:customBackground="@{effectSettingViewModel.bullButtonBackGrounds[9]}"
-                                android:onClick="@{(view) -> effectSettingViewModel.onClickBullButton(9)}"/>
+                                android:onClick="@{(view) -> effectSettingViewModel.onClickBullButton(9, context)}"/>
                         <Button android:id="@+id/bull_button_10" android:layout_margin="2dp" android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:text="10" app:customBackground="@{effectSettingViewModel.bullButtonBackGrounds[10]}"
-                                android:onClick="@{(view) -> effectSettingViewModel.onClickBullButton(10)}"/>
+                                android:onClick="@{(view) -> effectSettingViewModel.onClickBullButton(10, context)}"/>
                     </LinearLayout>
                 </RelativeLayout>
             </RelativeLayout>
@@ -133,7 +133,7 @@
                         android:layout_height="wrap_content">
                     <Switch
                             android:id="@+id/in_bull_effect_switch"
-                            android:onClick="@{(view) -> effectSettingViewModel.onClickSwitch(view)}"
+                            android:onClick="@{(view) -> effectSettingViewModel.onClickSwitch(view, context)}"
                             android:checked="@{effectSettingViewModel.isInBullSwitchChecked}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
@@ -147,27 +147,27 @@
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:text="1" app:customBackground="@{effectSettingViewModel.inBullButtonBackGrounds[1]}"
-                                android:onClick="@{(view) -> effectSettingViewModel.onClickInBullButton(1)}"/>
+                                android:onClick="@{(view) -> effectSettingViewModel.onClickInBullButton(1, context)}"/>
                         <Button android:id="@+id/in_bull_button_2" android:layout_margin="2dp"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:text="2" app:customBackground="@{effectSettingViewModel.inBullButtonBackGrounds[2]}"
-                                android:onClick="@{(view) -> effectSettingViewModel.onClickInBullButton(2)}"/>
+                                android:onClick="@{(view) -> effectSettingViewModel.onClickInBullButton(2, context)}"/>
                         <Button android:id="@+id/in_bull_button_3" android:layout_margin="2dp"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:text="3" app:customBackground="@{effectSettingViewModel.inBullButtonBackGrounds[3]}"
-                                android:onClick="@{(view) -> effectSettingViewModel.onClickInBullButton(3)}"/>
+                                android:onClick="@{(view) -> effectSettingViewModel.onClickInBullButton(3, context)}"/>
                         <Button android:id="@+id/in_bull_button_4" android:layout_margin="2dp"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:text="4" app:customBackground="@{effectSettingViewModel.inBullButtonBackGrounds[4]}"
-                                android:onClick="@{(view) -> effectSettingViewModel.onClickInBullButton(4)}"/>
+                                android:onClick="@{(view) -> effectSettingViewModel.onClickInBullButton(4, context)}"/>
                         <Button android:id="@+id/in_bull_button_5" android:layout_margin="2dp"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:text="5" app:customBackground="@{effectSettingViewModel.inBullButtonBackGrounds[5]}"
-                                android:onClick="@{(view) -> effectSettingViewModel.onClickInBullButton(5)}"/>
+                                android:onClick="@{(view) -> effectSettingViewModel.onClickInBullButton(5, context)}"/>
                     </LinearLayout>
                     <LinearLayout
                             android:id="@+id/in_bull_linear_layout2"
@@ -179,27 +179,27 @@
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:text="6" app:customBackground="@{effectSettingViewModel.inBullButtonBackGrounds[6]}"
-                                android:onClick="@{(view) -> effectSettingViewModel.onClickInBullButton(6)}"/>
+                                android:onClick="@{(view) -> effectSettingViewModel.onClickInBullButton(6, context)}"/>
                         <Button android:id="@+id/in_bull_button_7" android:layout_margin="2dp"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:text="7" app:customBackground="@{effectSettingViewModel.inBullButtonBackGrounds[7]}"
-                                android:onClick="@{(view) -> effectSettingViewModel.onClickInBullButton(7)}"/>
+                                android:onClick="@{(view) -> effectSettingViewModel.onClickInBullButton(7, context)}"/>
                         <Button android:id="@+id/in_bull_button_8" android:layout_margin="2dp"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:text="8" app:customBackground="@{effectSettingViewModel.inBullButtonBackGrounds[8]}"
-                                android:onClick="@{(view) -> effectSettingViewModel.onClickInBullButton(8)}"/>
+                                android:onClick="@{(view) -> effectSettingViewModel.onClickInBullButton(8, context)}"/>
                         <Button android:id="@+id/in_bull_button_9" android:layout_margin="2dp"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:text="9" app:customBackground="@{effectSettingViewModel.inBullButtonBackGrounds[9]}"
-                                android:onClick="@{(view) -> effectSettingViewModel.onClickInBullButton(9)}"/>
+                                android:onClick="@{(view) -> effectSettingViewModel.onClickInBullButton(9, context)}"/>
                         <Button android:id="@+id/in_bull_button_10" android:layout_margin="2dp"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:text="10" app:customBackground="@{effectSettingViewModel.inBullButtonBackGrounds[10]}"
-                                android:onClick="@{(view) -> effectSettingViewModel.onClickInBullButton(10)}"/>
+                                android:onClick="@{(view) -> effectSettingViewModel.onClickInBullButton(10, context)}"/>
                     </LinearLayout>
                 </RelativeLayout>
             </RelativeLayout>

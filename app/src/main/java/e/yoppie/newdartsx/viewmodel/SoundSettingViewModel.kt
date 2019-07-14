@@ -161,6 +161,7 @@ class SoundSettingViewModel : ViewModel() {
                         && isOthersSwitchChecked.value!!
                     ) isAllSwitchChecked.postValue(true)
                 } else {
+                    soundRepository.updateBullSound(0)
                     bullButtonBackGrounds.forEach { it.value.postValue(R.drawable.square_button_selector) }
                     isAllSwitchChecked.postValue(false)
                 }
@@ -175,6 +176,7 @@ class SoundSettingViewModel : ViewModel() {
                         && isOthersSwitchChecked.value!!
                     ) isAllSwitchChecked.postValue(true)
                 } else {
+                    soundRepository.updateInBullSound(0)
                     inBullButtonBackGrounds.forEach { it.value.postValue(R.drawable.square_button_selector) }
                     isAllSwitchChecked.postValue(false)
                 }

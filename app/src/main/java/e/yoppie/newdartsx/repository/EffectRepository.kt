@@ -2,6 +2,7 @@ package e.yoppie.newdartsx.repository
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Handler
 import android.util.Log
 import e.yoppie.newdartsx.model.room.AppDatabase
 import e.yoppie.newdartsx.model.room.entity.EffectEntity
@@ -10,6 +11,7 @@ import io.reactivex.schedulers.Schedulers
 
 class EffectRepository(context: Context) {
     private val db: AppDatabase = AppDatabase.getInstance(context)!!
+    private val mainThreadHandler = Handler()
 
     fun getSavedEffect(): EffectEntity = db.effectDao().findItem()
 
@@ -20,7 +22,7 @@ class EffectRepository(context: Context) {
         Completable
             .fromAction { db.effectDao().updateBullSound(bullEffect) }
             .subscribeOn(Schedulers.io())
-            .subscribe { handler() }
+            .subscribe { mainThreadHandler.post { handler() } }
     }
 
     @SuppressLint("CheckResult")
@@ -28,7 +30,7 @@ class EffectRepository(context: Context) {
         Completable
             .fromAction { db.effectDao().updateInBullSound(inBullEffect) }
             .subscribeOn(Schedulers.io())
-            .subscribe { handler() }
+            .subscribe { mainThreadHandler.post { handler() } }
     }
 
     @SuppressLint("CheckResult")

@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.content.Context
+import android.os.Handler
+import android.util.Log
 import android.view.View
 import e.yoppie.newdartsx.R
 import e.yoppie.newdartsx.model.EffectModel
@@ -37,24 +39,24 @@ class EffectSettingViewModel : ViewModel() {
     }
 
     @SuppressLint("CheckResult")
-    fun initView(context: Context){
+    fun initView(context: Context) {
         var effectEntity = EffectEntity()
         val effectRepository = EffectRepository(context)
         Completable
             .fromAction { effectEntity = effectRepository.getSavedEffect() }
             .subscribeOn(Schedulers.io())
             .subscribe {
-                if(effectEntity.bullEffect != 0){
+                if (effectEntity.bullEffect != 0) {
                     isBullSwitchChecked.postValue(true)
                     val targetId = EffectModel.forEffectId(effectEntity.bullEffect!!).id
                     bullButtonBackGrounds[targetId]!!.postValue(R.drawable.square_button2_selector)
                 }
-                if(effectEntity.inBullEffect != 0){
+                if (effectEntity.inBullEffect != 0) {
                     isInBullSwitchChecked.postValue(true)
                     val targetId = EffectModel.forEffectId(effectEntity.inBullEffect!!).id
                     inBullButtonBackGrounds[targetId]!!.postValue(R.drawable.square_button2_selector)
                 }
-                if(effectEntity.bullEffect != 0 && effectEntity.inBullEffect != 0){
+                if (effectEntity.bullEffect != 0 && effectEntity.inBullEffect != 0) {
                     isAllSwitchChecked.postValue(true)
                 }
             }
@@ -82,15 +84,31 @@ class EffectSettingViewModel : ViewModel() {
         if (isBullSwitchChecked.value!!) isAllSwitchChecked.postValue(true)
     }
 
-    fun onClickSwitch(view: View) {
+    fun onClickSwitch(view: View, context: Context) {
+        val effectRepository = EffectRepository(context)
         when (view.id) {
             R.id.all_switch -> {
-                if(isAllSwitchChecked.value!!){
+                if (isAllSwitchChecked.value!!) {
                     bullButtonBackGrounds.forEach { it.value.postValue(R.drawable.square_button_selector) }
                     inBullButtonBackGrounds.forEach { it.value.postValue(R.drawable.square_button_selector) }
-                }else{
-                    bullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)
-                    inBullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)
+                    val updateEntity = EffectEntity()
+                    updateEntity.id = 1
+                    updateEntity.bullEffect = 0
+                    updateEntity.inBullEffect = 0
+                    effectRepository.updateAll(updateEntity)
+                } else {
+                    if (!isBullSwitchChecked.value!!) {
+                        bullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)
+                        effectRepository.updateBullEffect(EffectModel.forId(1).effectId) {
+                            Log.d("yoppie_debug", "bull effect updated")
+                        }
+                    }
+                    if (!isInBullSwitchChecked.value!!) {
+                        inBullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)
+                        effectRepository.updateInBullEffect(EffectModel.forId(1).effectId) {
+                            Log.d("yoppie_debug", "inBull effect updated")
+                        }
+                    }
                 }
                 isAllSwitchChecked.postValue(!isAllSwitchChecked.value!!)
                 isBullSwitchChecked.postValue(!isAllSwitchChecked.value!!)
@@ -98,9 +116,15 @@ class EffectSettingViewModel : ViewModel() {
             }
             R.id.bull_effect_switch -> {
                 if (!isBullSwitchChecked.value!!) {
+                    effectRepository.updateBullEffect(EffectModel.forId(1).effectId) {
+                        Log.d("yoppie_debug", "bull effect updated")
+                    }
                     bullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)
-                    if(isInBullSwitchChecked.value!!) isAllSwitchChecked.postValue(true)
-                }else{
+                    if (isInBullSwitchChecked.value!!) isAllSwitchChecked.postValue(true)
+                } else {
+                    effectRepository.updateBullEffect(0) {
+                        Log.d("yoppie_debug", "bull effect updated")
+                    }
                     bullButtonBackGrounds.forEach { it.value.postValue(R.drawable.square_button_selector) }
                     isAllSwitchChecked.postValue(false)
                 }
@@ -108,9 +132,15 @@ class EffectSettingViewModel : ViewModel() {
             }
             R.id.in_bull_effect_switch -> {
                 if (!isInBullSwitchChecked.value!!) {
+                    effectRepository.updateInBullEffect(EffectModel.forId(1).effectId) {
+                        Log.d("yoppie_debug", "inBull effect updated")
+                    }
                     inBullButtonBackGrounds[1]!!.postValue(R.drawable.square_button2_selector)
-                    if(isBullSwitchChecked.value!!) isAllSwitchChecked.postValue(true)
-                }else{
+                    if (isBullSwitchChecked.value!!) isAllSwitchChecked.postValue(true)
+                } else {
+                    effectRepository.updateInBullEffect(0) {
+                        Log.d("yoppie_debug", "inBull effect updated")
+                    }
                     inBullButtonBackGrounds.forEach { it.value.postValue(R.drawable.square_button_selector) }
                     isAllSwitchChecked.postValue(false)
                 }
