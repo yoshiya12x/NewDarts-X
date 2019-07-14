@@ -16,6 +16,6 @@ class EffectEntity {
     var inBullSound: Int? = 0
 
     companion object {
-        fun create() = SoundEntity()
+        fun create() = EffectEntity()
     }
 }
