@@ -44,44 +44,47 @@ class ResultActivity : AppCompatActivity() {
         Animation.emphasize(this, againButton)
 
         initButtons()
-        initPie(bullCount, inBullCount, allCount)
+        if (allCount > 0) initPie(bullCount, inBullCount, allCount)
     }
 
     @SuppressLint("CheckResult")
-    private fun initButtons(){
+    private fun initButtons() {
         val buttonSound = Sound(this, R.raw.button_sound)
         closeButton.clicks().subscribe {
-            if(soundEntity != null && soundEntity!!.othersFlag!!) buttonSound.play()
+            if (soundEntity != null && soundEntity!!.othersFlag!!) buttonSound.play()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
         againButton.clicks().subscribe {
-            if(soundEntity != null && soundEntity!!.othersFlag!!) buttonSound.play()
+            if (soundEntity != null && soundEntity!!.othersFlag!!) buttonSound.play()
             val intent = Intent(this, SelectWordActivity::class.java)
             startActivity(intent)
         }
     }
 
-    private fun initPie(bullCount: Int, inBullCount: Int, allCount: Int){
+    private fun initPie(bullCount: Int, inBullCount: Int, allCount: Int) {
         pie.setUsePercentValues(true)
         pie.centerText = "BULL RATE"
         pie.legend.textColor = Color.WHITE
         pie.legend.textSize = 16f
 
-//        val value = listOf(
-//            (bullCount / allCount).toFloat(),
-//            (inBullCount / allCount).toFloat(),
-//            ((bullCount + inBullCount) / allCount).toFloat()
-//        )
-        val value = listOf(10f, 20f, 30f)
+        val value = listOf(
+            bullCount.toFloat(),
+            inBullCount.toFloat(),
+            (allCount - (bullCount + inBullCount)).toFloat()
+        )
         val label = listOf("Bull", "InBull", "Others")
         val entry = ArrayList<PieEntry>()
-        for(i in value.indices) {
-            entry.add( PieEntry(value[i], label[i]) )
+        for (i in value.indices) {
+            entry.add(PieEntry(value[i], label[i]))
         }
 
         val dataSet = PieDataSet(entry, "")
-        dataSet.colors = listOf(Color.rgb(3, 135, 236), Color.rgb(17, 79, 128), Color.rgb(46, 46, 46))
+        dataSet.colors = listOf(
+            Color.rgb(3, 135, 236),
+            Color.rgb(17, 79, 128),
+            Color.rgb(46, 46, 46)
+        )
         dataSet.setDrawValues(true)
 
         val pieData = PieData(dataSet)
