@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.content.Context
-import android.os.Handler
 import android.util.Log
 import android.view.View
 import e.yoppie.newdartsx.R

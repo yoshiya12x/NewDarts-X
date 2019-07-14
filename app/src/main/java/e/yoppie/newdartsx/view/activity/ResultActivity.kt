@@ -6,12 +6,10 @@ import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.PercentFormatter
-import com.github.mikephil.charting.utils.ColorTemplate
 import com.jakewharton.rxbinding2.view.clicks
 import e.yoppie.newdartsx.R
 import e.yoppie.newdartsx.model.room.entity.SoundEntity
@@ -49,14 +47,14 @@ class ResultActivity : AppCompatActivity() {
 
     @SuppressLint("CheckResult")
     private fun initButtons() {
-        val buttonSound = Sound(this, R.raw.button_sound)
+        val buttonSound = Sound()
         closeButton.clicks().subscribe {
-            if (soundEntity != null && soundEntity!!.othersFlag!!) buttonSound.play()
+            if (soundEntity != null && soundEntity!!.othersFlag!!) buttonSound.play(this, R.raw.button_sound)
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
         againButton.clicks().subscribe {
-            if (soundEntity != null && soundEntity!!.othersFlag!!) buttonSound.play()
+            if (soundEntity != null && soundEntity!!.othersFlag!!) buttonSound.play(this, R.raw.button_sound)
             val intent = Intent(this, SelectWordActivity::class.java)
             startActivity(intent)
         }

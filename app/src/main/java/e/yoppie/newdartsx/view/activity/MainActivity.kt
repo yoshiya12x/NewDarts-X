@@ -33,12 +33,12 @@ class MainActivity : AppCompatActivity() {
         Animation.emphasize(this, nob_game)
         Animation.emphasize(this, bull_game)
 
-        val buttonSound = Sound(this, R.raw.button_sound)
+        val buttonSound = Sound()
         nob_game.clicks().subscribe {
-            if(soundEntity != null && soundEntity!!.othersFlag!!) buttonSound.play()
+            if(soundEntity != null && soundEntity!!.othersFlag!!) buttonSound.play(this, R.raw.button_sound)
         }
         bull_game.clicks().subscribe {
-            if(soundEntity != null && soundEntity!!.othersFlag!!) buttonSound.play()
+            if(soundEntity != null && soundEntity!!.othersFlag!!) buttonSound.play(this, R.raw.button_sound)
             val intent = Intent(this, SelectWordActivity::class.java)
             startActivity(intent)
         }

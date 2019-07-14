@@ -10,6 +10,7 @@ import e.yoppie.newdartsx.model.SoundModel
 import e.yoppie.newdartsx.model.room.entity.SoundEntity
 import e.yoppie.newdartsx.repository.SoundRepository
 import e.yoppie.newdartsx.util.Bgm
+import e.yoppie.newdartsx.util.Sound
 import io.reactivex.Completable
 import io.reactivex.schedulers.Schedulers
 
@@ -22,8 +23,6 @@ class SoundSettingViewModel : ViewModel() {
     val isOthersSwitchChecked: MutableLiveData<Boolean> = MutableLiveData()
     var bullButtonBackGrounds: MutableMap<Int, MutableLiveData<Int>> = mutableMapOf()
     var inBullButtonBackGrounds: MutableMap<Int, MutableLiveData<Int>> = mutableMapOf()
-    var bullSoundHandler = {}
-    var inBullSoundHandler = {}
 
     init {
         isAllSwitchChecked.value = false
@@ -73,8 +72,10 @@ class SoundSettingViewModel : ViewModel() {
 
     fun onClickBullButton(id: Int, context: Context) {
         val soundRepository = SoundRepository(context)
-        soundRepository.updateBullSound(SoundModel.forId(id).soundId)
-        bullSoundHandler()
+        val soundId = SoundModel.forId(id).soundId
+        val sound = Sound()
+        sound.play(context, soundId)
+        soundRepository.updateBullSound(soundId)
         isBullSwitchChecked.postValue(true)
         bullButtonBackGrounds.forEach {
             if (id == it.key) it.value.postValue(R.drawable.square_button2_selector)
@@ -89,8 +90,10 @@ class SoundSettingViewModel : ViewModel() {
 
     fun onClickInBullButton(id: Int, context: Context) {
         val soundRepository = SoundRepository(context)
-        soundRepository.updateInBullSound(SoundModel.forId(id).soundId)
-        inBullSoundHandler()
+        val soundId = SoundModel.forId(id).soundId
+        val sound = Sound()
+        sound.play(context, soundId)
+        soundRepository.updateInBullSound(soundId)
         isInBullSwitchChecked.postValue(true)
         inBullButtonBackGrounds.forEach {
             if (id == it.key) it.value.postValue(R.drawable.square_button2_selector)

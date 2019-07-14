@@ -30,13 +30,6 @@ class SoundSettingFragment : Fragment() {
             container,
             false
         )
-        val sound = Sound(context, R.raw.button_sound)
-        soundSettingViewModel.bullSoundHandler = {
-            sound.play()
-        }
-        soundSettingViewModel.inBullSoundHandler = {
-            sound.play()
-        }
 
         binding.soundSettingViewModel = soundSettingViewModel
         binding.lifecycleOwner = this

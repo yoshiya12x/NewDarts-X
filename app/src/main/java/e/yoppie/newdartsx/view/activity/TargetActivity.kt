@@ -24,8 +24,8 @@ class TargetActivity : AppCompatActivity() {
     private var isPreCode = false
     private lateinit var soundRepository: SoundRepository
     private lateinit var effectRepository: EffectRepository
-    private var bullSound: Sound? = null
-    private var inBullSound: Sound? = null
+    private val sound = Sound()
+    private var soundEntity: SoundEntity? = null
     private var effectEntity: EffectEntity? = null
     private var bullCount = 0
     private var inBullCount = 0
@@ -38,6 +38,7 @@ class TargetActivity : AppCompatActivity() {
         val searchWord = intent.getStringExtra("searchWord")
 
         arrowFloatingActionButton.clicks().subscribe {
+            sound.play(this, R.raw.button_sound)
             val intent = Intent(this, ResultActivity::class.java)
             intent.putExtra("bullCount", bullCount)
             intent.putExtra("inBullCount", inBullCount)
@@ -64,7 +65,7 @@ class TargetActivity : AppCompatActivity() {
 
         val score = if (isPreCode) scoreManagement.convertPreCode() else scoreManagement.convert()
         playAward(score)
-        allCount ++
+        allCount++
         isPreCode = false
 
         return super.dispatchKeyEvent(event)
@@ -73,32 +74,32 @@ class TargetActivity : AppCompatActivity() {
     private fun playAward(score: Int) {
         when (score) {
             50 -> {
-                if (bullSound != null) bullSound!!.play()
-                if (effectEntity!!.bullEffect != 0) {
-                    Animation.runLottieAnimation(target_parent, effectEntity!!.bullEffect!!, this)
-                }
-                bullCount ++
+                if (soundEntity!!.bullSound != 0) sound.play(this, soundEntity!!.bullSound!!)
+                if (effectEntity!!.bullEffect != 0) Animation.runLottieAnimation(
+                    target_parent,
+                    effectEntity!!.bullEffect!!,
+                    this
+                )
+                bullCount++
             }
             100 -> {
-                if (inBullSound != null) inBullSound!!.play()
-                if (effectEntity!!.inBullEffect != 0) {
-                    Animation.runLottieAnimation(target_parent, effectEntity!!.inBullEffect!!, this)
-                }
-                inBullCount ++
+                if (soundEntity!!.inBullSound != 0) sound.play(this, soundEntity!!.inBullSound!!)
+                if (effectEntity!!.inBullEffect != 0) Animation.runLottieAnimation(
+                    target_parent,
+                    effectEntity!!.inBullEffect!!,
+                    this
+                )
+                inBullCount++
             }
         }
     }
 
     @SuppressLint("CheckResult")
     private fun loadSound() {
-        var soundEntity: SoundEntity? = null
         Completable
             .fromAction { soundEntity = soundRepository.getSavedSound() }
             .subscribeOn(Schedulers.io())
-            .subscribe {
-                if (soundEntity!!.bullSound != 0) bullSound = Sound(this, soundEntity!!.bullSound!!)
-                if (soundEntity!!.inBullSound != 0) inBullSound = Sound(this, soundEntity!!.inBullSound!!)
-            }
+            .subscribe { Log.d("yoppie_debug", "sound loaded") }
     }
 
     @SuppressLint("CheckResult")

@@ -4,10 +4,9 @@ import android.content.Context
 import android.media.AudioAttributes
 import android.media.SoundPool
 
-class Sound(context: Context?, soundId: Int) {
+class Sound {
 
     private var soundPool: SoundPool
-    private var sound: Int
 
     init {
         val audioAttributes = AudioAttributes.Builder()
@@ -18,10 +17,12 @@ class Sound(context: Context?, soundId: Int) {
             .setAudioAttributes(audioAttributes)
             .setMaxStreams(1)
             .build()
-        sound = soundPool.load(context, soundId, 1)
     }
 
-    fun play() {
-        soundPool.play(sound, 1.0f, 1.0f, 0, 0, 1.0f)
+    fun play(context: Context, soundId: Int) {
+        val sound = soundPool.load(context, soundId, 1)
+        soundPool.setOnLoadCompleteListener { soundPool, _, _ ->
+            soundPool.play(sound, 1.0f, 1.0f, 0, 0, 1.0f)
+        }
     }
 }

@@ -39,10 +39,6 @@ class SearchWordsFragment : Fragment() {
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-    }
-
     private fun initSearchWordRecyclerView(binding: SearchWordsSettingFragmentBinding): SearchWordsSettingFragmentBinding? {
         val linearLayoutManager = LinearLayoutManager(activity)
         binding.searchWordRecyclerView.layoutManager = linearLayoutManager
