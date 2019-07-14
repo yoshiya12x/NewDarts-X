@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         }
         bull_game.clicks().subscribe {
             if(soundEntity != null && soundEntity!!.othersFlag!!) buttonSound.play()
-            val intent = Intent(this, TargetActivity::class.java)
+            val intent = Intent(this, SelectWordActivity::class.java)
             startActivity(intent)
         }
         setting_button.clicks().subscribe {

@@ -15,4 +15,5 @@
     <string name="search_words_setting_add">add</string>
     <string name="search_words_setting_del_button">×</string>
     <string name="game_target">TARGET</string>
+    <string name="game_select">SELECT</string>
 </resources>

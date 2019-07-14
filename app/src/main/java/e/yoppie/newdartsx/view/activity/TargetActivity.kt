@@ -31,6 +31,9 @@ class TargetActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_target)
+
+        val searchWord = intent.getStringExtra("searchWord")
+        Log.d("yoppie_debug", searchWord)
         soundRepository = SoundRepository(this)
         effectRepository = EffectRepository(this)
         loadSound()
