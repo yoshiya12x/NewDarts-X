@@ -11,14 +11,9 @@ import io.reactivex.schedulers.Schedulers
 class SoundRepository(context: Context) {
     private val db: AppDatabase = AppDatabase.getInstance(context)!!
 
-    fun getSavedSound(): SoundEntity {
-        return db.soundDao().findItem()
-    }
+    fun getSavedSound(): SoundEntity = db.soundDao().findItem()
 
-    fun insertSound(context: Context, target: SoundEntity){
-        val db = AppDatabase.getInstance(context)!!
-        db.soundDao().insertItem(target)
-    }
+    fun insertSound(target: SoundEntity) = db.soundDao().insertItem(target)
 
     @SuppressLint("CheckResult")
     fun updateBgmFlag(bgmFlag: Boolean) {
@@ -53,7 +48,7 @@ class SoundRepository(context: Context) {
     }
 
     @SuppressLint("CheckResult")
-    fun updateAll(target: SoundEntity){
+    fun updateAll(target: SoundEntity) {
         Completable
             .fromAction { db.soundDao().updateItem(target) }
             .subscribeOn(Schedulers.io())

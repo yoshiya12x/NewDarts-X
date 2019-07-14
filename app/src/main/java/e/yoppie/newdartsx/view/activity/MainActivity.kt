@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         Completable
             .fromAction {
                 soundEntity = SoundEntity.create()
-                soundRepository.insertSound(this, soundEntity!!)
+                soundRepository.insertSound(soundEntity!!)
             }
             .subscribeOn(Schedulers.io())
             .subscribe { playBgm() }
