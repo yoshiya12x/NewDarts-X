@@ -9,7 +9,6 @@ import com.jakewharton.rxbinding2.view.clicks
 import e.yoppie.newdartsx.R
 import e.yoppie.newdartsx.model.room.entity.SoundEntity
 import e.yoppie.newdartsx.repository.SoundRepository
-import e.yoppie.newdartsx.service.BgmService
 import e.yoppie.newdartsx.util.Animation
 import e.yoppie.newdartsx.util.Bgm
 import e.yoppie.newdartsx.util.Sound

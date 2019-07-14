@@ -4,13 +4,11 @@ import android.annotation.SuppressLint
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.content.Context
-import android.content.Intent
 import android.view.View
 import e.yoppie.newdartsx.R
 import e.yoppie.newdartsx.model.SoundModel
 import e.yoppie.newdartsx.model.room.entity.SoundEntity
 import e.yoppie.newdartsx.repository.SoundRepository
-import e.yoppie.newdartsx.service.BgmService
 import e.yoppie.newdartsx.util.Bgm
 import io.reactivex.Completable
 import io.reactivex.schedulers.Schedulers
