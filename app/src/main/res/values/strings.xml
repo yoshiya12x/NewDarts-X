@@ -22,4 +22,5 @@
     <string name="game_image1">IMAGE1</string>
     <string name="game_image2">IMAGE2</string>
     <string name="game_image3">IMAGE3</string>
+    <string name="tos_title">利用規約</string>
 </resources>

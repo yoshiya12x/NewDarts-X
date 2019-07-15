@@ -21,6 +21,11 @@ enum class FragmentItem(
         position = 2,
         title = "EFFECT",
         newFragment = { EffectSettingFragment.newInstance() }
+    ),
+    TOS(
+        position = 3,
+        title = "Terms of Use",
+        newFragment = { TosFragment.newInstance() }
     );
 
     companion object {

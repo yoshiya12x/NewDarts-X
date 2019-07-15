@@ -7,7 +7,7 @@ import e.yoppie.newdartsx.view.fragment.FragmentItem
 
 class SettingFragmentPagerAdapter(fm: FragmentManager?) : FragmentStatePagerAdapter(fm) {
 
-    private val itemSize = 3
+    private val itemSize = 4
 
     override fun getItem(position: Int): Fragment = FragmentItem.forPosition(position).newFragment.invoke()
 
