@@ -85,7 +85,7 @@ class TosFragment : Fragment() {
                     "\n" +
                     "附則\n" +
                     "\n" +
-                    "本規約は、20XX年X月X日から施行します。\n"
+                    "本規約は、2019年7月21日から施行します。\n"
 
         return binding.root
     }
