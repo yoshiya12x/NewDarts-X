@@ -42,42 +42,42 @@ enum class SoundModel(
         bullButtonId = R.id.bull_sound_button_5,
         inBullButtonId = R.id.in_bull_sound_button_5,
         backGroundId = R.drawable.square_button_selector,
-        soundId = R.raw.bull_sound1
+        soundId = R.raw.bull_sound5
     ),
     EFFECT6(
         id = 6,
         bullButtonId = R.id.bull_sound_button_6,
         inBullButtonId = R.id.in_bull_sound_button_6,
         backGroundId = R.drawable.square_button_selector,
-        soundId = R.raw.bull_sound1
+        soundId = R.raw.bull_sound6
     ),
     EFFECT7(
         id = 7,
         bullButtonId = R.id.bull_sound_button_7,
         inBullButtonId = R.id.in_bull_sound_button_7,
         backGroundId = R.drawable.square_button_selector,
-        soundId = R.raw.bull_sound1
+        soundId = R.raw.bull_sound7
     ),
     EFFECT8(
         id = 8,
         bullButtonId = R.id.bull_sound_button_8,
         inBullButtonId = R.id.in_bull_sound_button_8,
         backGroundId = R.drawable.square_button_selector,
-        soundId = R.raw.bull_sound1
+        soundId = R.raw.bull_sound8
     ),
     EFFECT9(
         id = 9,
         bullButtonId = R.id.bull_sound_button_9,
         inBullButtonId = R.id.in_bull_sound_button_9,
         backGroundId = R.drawable.square_button_selector,
-        soundId = R.raw.bull_sound1
+        soundId = R.raw.bull_sound9
     ),
     EFFECT10(
         id = 10,
         bullButtonId = R.id.bull_sound_button_10,
         inBullButtonId = R.id.in_bull_sound_button_10,
         backGroundId = R.drawable.square_button_selector,
-        soundId = R.raw.bull_sound1
+        soundId = R.raw.bull_sound10
     );
 
     companion object {

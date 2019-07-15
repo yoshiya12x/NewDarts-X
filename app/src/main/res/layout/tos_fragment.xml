@@ -19,12 +19,12 @@
         <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/common_padding"
                 app:layout_constraintTop_toBottomOf="@+id/tosTitleTextView">
             <TextView
                     android:id="@+id/tosContextTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/common_padding"
                     android:textColor="@color/colorPrimary"/>
         </ScrollView>
 
