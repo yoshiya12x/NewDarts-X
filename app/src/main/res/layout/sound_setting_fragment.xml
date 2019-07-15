@@ -88,27 +88,32 @@
                         <Button android:id="@+id/bull_sound_button_1" android:layout_margin="2dp"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:text="1" app:customBackground="@{soundSettingViewModel.bullButtonBackGrounds[1]}"
+                                android:text="1"
+                                app:customBackground="@{soundSettingViewModel.bullButtonBackGrounds[1]}"
                                 android:onClick="@{(view) -> soundSettingViewModel.onClickBullButton(1, context)}"/>
                         <Button android:id="@+id/bull_sound_button_2" android:layout_margin="2dp"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:text="2" app:customBackground="@{soundSettingViewModel.bullButtonBackGrounds[2]}"
+                                android:text="2"
+                                app:customBackground="@{soundSettingViewModel.bullButtonBackGrounds[2]}"
                                 android:onClick="@{(view) -> soundSettingViewModel.onClickBullButton(2, context)}"/>
                         <Button android:id="@+id/bull_sound_button_3" android:layout_margin="2dp"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:text="3" app:customBackground="@{soundSettingViewModel.bullButtonBackGrounds[3]}"
+                                android:text="3"
+                                app:customBackground="@{soundSettingViewModel.bullButtonBackGrounds[3]}"
                                 android:onClick="@{(view) -> soundSettingViewModel.onClickBullButton(3, context)}"/>
                         <Button android:id="@+id/bull_sound_button_4" android:layout_margin="2dp"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:text="4" app:customBackground="@{soundSettingViewModel.bullButtonBackGrounds[4]}"
+                                android:text="4"
+                                app:customBackground="@{soundSettingViewModel.bullButtonBackGrounds[4]}"
                                 android:onClick="@{(view) -> soundSettingViewModel.onClickBullButton(4, context)}"/>
                         <Button android:id="@+id/bull_sound_button_5" android:layout_margin="2dp"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:text="5" app:customBackground="@{soundSettingViewModel.bullButtonBackGrounds[5]}"
+                                android:text="5"
+                                app:customBackground="@{soundSettingViewModel.bullButtonBackGrounds[5]}"
                                 android:onClick="@{(view) -> soundSettingViewModel.onClickBullButton(5, context)}"/>
                     </LinearLayout>
                     <LinearLayout
@@ -120,27 +125,32 @@
                         <Button android:id="@+id/bull_sound_button_6" android:layout_margin="2dp"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:text="6" app:customBackground="@{soundSettingViewModel.bullButtonBackGrounds[6]}"
+                                android:text="6"
+                                app:customBackground="@{soundSettingViewModel.bullButtonBackGrounds[6]}"
                                 android:onClick="@{(view) -> soundSettingViewModel.onClickBullButton(6, context)}"/>
                         <Button android:id="@+id/bull_sound_button_7" android:layout_margin="2dp"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:text="7" app:customBackground="@{soundSettingViewModel.bullButtonBackGrounds[7]}"
+                                android:text="7"
+                                app:customBackground="@{soundSettingViewModel.bullButtonBackGrounds[7]}"
                                 android:onClick="@{(view) -> soundSettingViewModel.onClickBullButton(7, context)}"/>
                         <Button android:id="@+id/bull_sound_button_8" android:layout_margin="2dp"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:text="8" app:customBackground="@{soundSettingViewModel.bullButtonBackGrounds[8]}"
+                                android:text="8"
+                                app:customBackground="@{soundSettingViewModel.bullButtonBackGrounds[8]}"
                                 android:onClick="@{(view) -> soundSettingViewModel.onClickBullButton(8, context)}"/>
                         <Button android:id="@+id/bull_sound_button_9" android:layout_margin="2dp"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:text="9" app:customBackground="@{soundSettingViewModel.bullButtonBackGrounds[9]}"
+                                android:text="9"
+                                app:customBackground="@{soundSettingViewModel.bullButtonBackGrounds[9]}"
                                 android:onClick="@{(view) -> soundSettingViewModel.onClickBullButton(9, context)}"/>
                         <Button android:id="@+id/bull_sound_button_10" android:layout_margin="2dp"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:text="10" app:customBackground="@{soundSettingViewModel.bullButtonBackGrounds[10]}"
+                                android:text="10"
+                                app:customBackground="@{soundSettingViewModel.bullButtonBackGrounds[10]}"
                                 android:onClick="@{(view) -> soundSettingViewModel.onClickBullButton(10, context)}"/>
                     </LinearLayout>
                 </RelativeLayout>

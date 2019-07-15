@@ -16,7 +16,7 @@ class SearchWordRepository {
         return db.searchWordDao().deleteItem(target)
     }
 
-    fun insertSearchWord(context: Context, target: SearchWordEntity){
+    fun insertSearchWord(context: Context, target: SearchWordEntity) {
         val db = AppDatabase.getInstance(context)!!
         db.searchWordDao().insertItem(target)
     }

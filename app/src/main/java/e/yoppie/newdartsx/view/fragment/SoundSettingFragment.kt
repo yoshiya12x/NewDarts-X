@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import e.yoppie.newdartsx.R
 import e.yoppie.newdartsx.databinding.SoundSettingFragmentBinding
-import e.yoppie.newdartsx.util.Sound
 import e.yoppie.newdartsx.viewmodel.SoundSettingViewModel
 
 class SoundSettingFragment : Fragment() {

@@ -11,7 +11,7 @@ object Bgm {
         context.startForegroundService(intentBgm)
     }
 
-    fun stop(context: Context){
+    fun stop(context: Context) {
         val intentBgm = Intent(context, BgmService::class.java)
         intentBgm.putExtra("REQUEST_CODE", 1)
         context.stopService(intentBgm)

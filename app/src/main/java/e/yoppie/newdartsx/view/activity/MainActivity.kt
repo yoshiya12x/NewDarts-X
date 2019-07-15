@@ -35,10 +35,10 @@ class MainActivity : AppCompatActivity() {
 
         val buttonSound = Sound()
         nob_game.clicks().subscribe {
-            if(soundEntity != null && soundEntity!!.othersFlag!!) buttonSound.play(this, R.raw.button_sound)
+            if (soundEntity != null && soundEntity!!.othersFlag!!) buttonSound.play(this, R.raw.button_sound)
         }
         bull_game.clicks().subscribe {
-            if(soundEntity != null && soundEntity!!.othersFlag!!) buttonSound.play(this, R.raw.button_sound)
+            if (soundEntity != null && soundEntity!!.othersFlag!!) buttonSound.play(this, R.raw.button_sound)
             val intent = Intent(this, SelectWordActivity::class.java)
             startActivity(intent)
         }
@@ -96,16 +96,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     @SuppressLint("CheckResult")
-    private fun initEffect(){
+    private fun initEffect() {
         var effectEntity: EffectEntity? = null
         Completable
             .fromAction { effectEntity = effectRepository.getSavedEffect() }
             .subscribeOn(Schedulers.io())
-            .subscribe { if(effectEntity == null) initialEffect() }
+            .subscribe { if (effectEntity == null) initialEffect() }
     }
 
     @SuppressLint("CheckResult")
-    private fun initialEffect(){
+    private fun initialEffect() {
         Completable
             .fromAction { effectRepository.insertEffect(EffectEntity.create()) }
             .subscribeOn(Schedulers.io())

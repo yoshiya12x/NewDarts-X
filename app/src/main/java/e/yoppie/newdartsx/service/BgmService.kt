@@ -52,7 +52,7 @@ class BgmService : Service() {
         }
     }
 
-    private fun audioStop(){
+    private fun audioStop() {
         mediaPlayer.stop()
         mediaPlayer.reset()
         mediaPlayer.release()

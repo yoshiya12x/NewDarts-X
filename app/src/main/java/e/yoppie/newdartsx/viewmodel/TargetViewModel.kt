@@ -57,10 +57,10 @@ class TargetViewModel : ViewModel() {
                     && imageVisibility3.value == View.GONE -> {
                 imageVisibility1.postValue(View.GONE)
                 imageVisibility2.postValue(View.VISIBLE)
-                if(images.value().size >= imagesNextIndex + 1){
+                if (images.value().size >= imagesNextIndex + 1) {
                     imageUrl1.postValue(images.value()[imagesNextIndex].thumbnailUrl())
-                    imagesNextIndex ++
-                }else{
+                    imagesNextIndex++
+                } else {
                     imageUrl1.postValue(images.value()[0].thumbnailUrl())
                     imagesNextIndex = 1
                 }
@@ -70,10 +70,10 @@ class TargetViewModel : ViewModel() {
                     && imageVisibility3.value == View.GONE -> {
                 imageVisibility2.postValue(View.GONE)
                 imageVisibility3.postValue(View.VISIBLE)
-                if(images.value().size >= imagesNextIndex + 1){
+                if (images.value().size >= imagesNextIndex + 1) {
                     imageUrl2.postValue(images.value()[imagesNextIndex].thumbnailUrl())
-                    imagesNextIndex ++
-                }else{
+                    imagesNextIndex++
+                } else {
                     imageUrl2.postValue(images.value()[0].thumbnailUrl())
                     imagesNextIndex = 1
                 }
@@ -83,10 +83,10 @@ class TargetViewModel : ViewModel() {
                     && imageVisibility3.value == View.VISIBLE -> {
                 imageVisibility1.postValue(View.VISIBLE)
                 imageVisibility3.postValue(View.GONE)
-                if(images.value().size >= imagesNextIndex + 1){
+                if (images.value().size >= imagesNextIndex + 1) {
                     imageUrl3.postValue(images.value()[imagesNextIndex].thumbnailUrl())
-                    imagesNextIndex ++
-                }else{
+                    imagesNextIndex++
+                } else {
                     imageUrl3.postValue(images.value()[0].thumbnailUrl())
                     imagesNextIndex = 1
                 }
@@ -95,10 +95,10 @@ class TargetViewModel : ViewModel() {
                     && imageVisibility2.value == View.GONE
                     && imageVisibility3.value == View.GONE -> {
                 imageVisibility1.postValue(View.VISIBLE)
-                if(images.value().size >= imagesNextIndex + 1){
+                if (images.value().size >= imagesNextIndex + 1) {
                     imageUrl1.postValue(images.value()[imagesNextIndex].thumbnailUrl())
-                    imagesNextIndex ++
-                }else{
+                    imagesNextIndex++
+                } else {
                     imageUrl1.postValue(images.value()[0].thumbnailUrl())
                     imagesNextIndex = 1
                 }

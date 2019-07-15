@@ -11,7 +11,9 @@ class BingImageSearchRepository {
 
     private val client: BingImageSearchAPI
 
-    init { client = BingImageSearchManager.authenticate(SECRET_KEY) }
+    init {
+        client = BingImageSearchManager.authenticate(SECRET_KEY)
+    }
 
     fun getImages(word: String): ImagesModel = client.bingImages().search().withQuery(word).execute()
 }
