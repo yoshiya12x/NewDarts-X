@@ -9,7 +9,10 @@ import android.support.constraint.ConstraintLayout
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import com.airbnb.lottie.LottieAnimationView
+import com.bumptech.glide.Glide
 import e.yoppie.newdartsx.R
 
 object Animation {
@@ -27,11 +30,11 @@ object Animation {
 
     @JvmStatic
     @BindingAdapter("customBackground")
-    fun Button.customBackground(id: Int){
+    fun Button.customBackground(id: Int) {
         this.setBackgroundResource(id)
     }
 
-    fun runLottieAnimation(parent: ConstraintLayout, id: Int, context: Context?){
+    fun runLottieAnimation(parent: ConstraintLayout, id: Int, context: Context?) {
         val lottieAnimationView = LottieAnimationView(context)
         lottieAnimationView.setAnimation(id)
         parent.addView(lottieAnimationView)
@@ -42,5 +45,16 @@ object Animation {
             }
         })
 
+    }
+
+    @JvmStatic
+    @BindingAdapter("imageUrl")
+    fun ImageView.loadImage(url: String?) {
+        if (!url.isNullOrBlank()) {
+            Glide.with(this.context)
+                .load(url)
+                .error(android.R.drawable.btn_star_big_on)
+                .into(this)
+        }
     }
 }

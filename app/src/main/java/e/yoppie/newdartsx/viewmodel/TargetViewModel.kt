@@ -19,6 +19,7 @@ class TargetViewModel : ViewModel() {
     val imageVisibility1: MutableLiveData<Int> = MutableLiveData()
     val imageVisibility2: MutableLiveData<Int> = MutableLiveData()
     val imageVisibility3: MutableLiveData<Int> = MutableLiveData()
+    val textVisibility: MutableLiveData<Int> = MutableLiveData()
 
     init {
         val initialUrl =
@@ -26,10 +27,11 @@ class TargetViewModel : ViewModel() {
         imageUrl1.value = initialUrl
         imageUrl2.value = initialUrl
         imageUrl3.value = initialUrl
-        val initialVisibility = View.GONE
-        imageVisibility1.value = initialVisibility
-        imageVisibility2.value = initialVisibility
-        imageVisibility3.value = initialVisibility
+        val initialImageVisibility = View.GONE
+        imageVisibility1.value = initialImageVisibility
+        imageVisibility2.value = initialImageVisibility
+        imageVisibility3.value = initialImageVisibility
+        textVisibility.value = View.VISIBLE
     }
 
     @SuppressLint("CheckResult")
@@ -48,6 +50,7 @@ class TargetViewModel : ViewModel() {
     }
 
     fun changeImage() {
+        textVisibility.postValue(View.GONE)
         when {
             imageVisibility1.value == View.VISIBLE
                     && imageVisibility2.value == View.GONE
@@ -92,6 +95,13 @@ class TargetViewModel : ViewModel() {
                     && imageVisibility2.value == View.GONE
                     && imageVisibility3.value == View.GONE -> {
                 imageVisibility1.postValue(View.VISIBLE)
+                if(images.value().size >= imagesNextIndex + 1){
+                    imageUrl1.postValue(images.value()[imagesNextIndex].thumbnailUrl())
+                    imagesNextIndex ++
+                }else{
+                    imageUrl1.postValue(images.value()[0].thumbnailUrl())
+                    imagesNextIndex = 1
+                }
             }
         }
     }

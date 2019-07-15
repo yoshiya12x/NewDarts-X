@@ -44,6 +44,7 @@ class TargetActivity : AppCompatActivity() {
         val binding = DataBindingUtil.setContentView<ActivityTargetBinding>(this, R.layout.activity_target)
         viewModel = ViewModelProviders.of(this).get(TargetViewModel::class.java)
         binding.targetViewModel = viewModel
+        binding.lifecycleOwner = this
         viewModel.setImages(searchWord)
 
         arrowFloatingActionButton.clicks().subscribe {

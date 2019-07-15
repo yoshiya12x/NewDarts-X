@@ -19,4 +19,7 @@
     <string name="game_slash">/</string>
     <string name="game_again">AGAIN</string>
     <string name="game_end">END</string>
+    <string name="game_image1">IMAGE1</string>
+    <string name="game_image2">IMAGE2</string>
+    <string name="game_image3">IMAGE3</string>
 </resources>
