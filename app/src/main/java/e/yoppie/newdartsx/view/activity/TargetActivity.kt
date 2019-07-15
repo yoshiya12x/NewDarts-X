@@ -1,13 +1,16 @@
 package e.yoppie.newdartsx.view.activity
 
 import android.annotation.SuppressLint
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
+import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
 import com.jakewharton.rxbinding2.view.clicks
 import e.yoppie.newdartsx.R
+import e.yoppie.newdartsx.databinding.ActivityTargetBinding
 import e.yoppie.newdartsx.model.room.entity.EffectEntity
 import e.yoppie.newdartsx.model.room.entity.SoundEntity
 import e.yoppie.newdartsx.repository.EffectRepository
@@ -15,6 +18,7 @@ import e.yoppie.newdartsx.repository.SoundRepository
 import e.yoppie.newdartsx.util.Animation
 import e.yoppie.newdartsx.util.ScoreManagement
 import e.yoppie.newdartsx.util.Sound
+import e.yoppie.newdartsx.viewmodel.TargetViewModel
 import io.reactivex.Completable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_target.*
@@ -24,6 +28,7 @@ class TargetActivity : AppCompatActivity() {
     private var isPreCode = false
     private lateinit var soundRepository: SoundRepository
     private lateinit var effectRepository: EffectRepository
+    private lateinit var viewModel: TargetViewModel
     private val sound = Sound()
     private var soundEntity: SoundEntity? = null
     private var effectEntity: EffectEntity? = null
@@ -34,8 +39,12 @@ class TargetActivity : AppCompatActivity() {
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_target)
         val searchWord = intent.getStringExtra("searchWord")
+
+        val binding = DataBindingUtil.setContentView<ActivityTargetBinding>(this, R.layout.activity_target)
+        viewModel = ViewModelProviders.of(this).get(TargetViewModel::class.java)
+        binding.targetViewModel = viewModel
+        viewModel.setImages(searchWord)
 
         arrowFloatingActionButton.clicks().subscribe {
             sound.play(this, R.raw.button_sound)
@@ -74,6 +83,7 @@ class TargetActivity : AppCompatActivity() {
     private fun playAward(score: Int) {
         when (score) {
             50 -> {
+                viewModel.changeImage()
                 if (soundEntity!!.bullSound != 0) sound.play(this, soundEntity!!.bullSound!!)
                 if (effectEntity!!.bullEffect != 0) Animation.runLottieAnimation(
                     target_parent,
@@ -83,6 +93,7 @@ class TargetActivity : AppCompatActivity() {
                 bullCount++
             }
             100 -> {
+                viewModel.changeImage()
                 if (soundEntity!!.inBullSound != 0) sound.play(this, soundEntity!!.inBullSound!!)
                 if (effectEntity!!.inBullEffect != 0) Animation.runLottieAnimation(
                     target_parent,

@@ -19,6 +19,11 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
     }
     buildTypes {
         release {
@@ -109,4 +114,8 @@ dependencies {
 
     // MPAndroidChart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    // BingImageSearch
+    implementation 'com.microsoft.azure.cognitiveservices:azure-cognitiveservices-imagesearch:1.0.2'
+    implementation 'com.microsoft.azure:azure-annotations:1.2.0'
 }
