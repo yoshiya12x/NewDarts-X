@@ -14,28 +14,28 @@ enum class EffectModel(
         bullButtonId = R.id.bull_button_1,
         inBullButtonId = R.id.in_bull_button_1,
         backGroundId = R.drawable.square_button_selector,
-        effectId = R.raw.bull5
+        effectId = R.raw.bull1
     ),
     EFFECT2(
         id = 2,
         bullButtonId = R.id.bull_button_2,
         inBullButtonId = R.id.in_bull_button_2,
         backGroundId = R.drawable.square_button_selector,
-        effectId = R.raw.bull5
+        effectId = R.raw.bull2
     ),
     EFFECT3(
         id = 3,
         bullButtonId = R.id.bull_button_3,
         inBullButtonId = R.id.in_bull_button_3,
         backGroundId = R.drawable.square_button_selector,
-        effectId = R.raw.bull5
+        effectId = R.raw.bull3
     ),
     EFFECT4(
         id = 4,
         bullButtonId = R.id.bull_button_4,
         inBullButtonId = R.id.in_bull_button_4,
         backGroundId = R.drawable.square_button_selector,
-        effectId = R.raw.bull5
+        effectId = R.raw.bull4
     ),
     EFFECT5(
         id = 5,
@@ -49,35 +49,35 @@ enum class EffectModel(
         bullButtonId = R.id.bull_button_6,
         inBullButtonId = R.id.in_bull_button_6,
         backGroundId = R.drawable.square_button_selector,
-        effectId = R.raw.bull5
+        effectId = R.raw.bull6
     ),
     EFFECT7(
         id = 7,
         bullButtonId = R.id.bull_button_7,
         inBullButtonId = R.id.in_bull_button_7,
         backGroundId = R.drawable.square_button_selector,
-        effectId = R.raw.bull5
+        effectId = R.raw.bull7
     ),
     EFFECT8(
         id = 8,
         bullButtonId = R.id.bull_button_8,
         inBullButtonId = R.id.in_bull_button_8,
         backGroundId = R.drawable.square_button_selector,
-        effectId = R.raw.bull5
+        effectId = R.raw.bull8
     ),
     EFFECT9(
         id = 9,
         bullButtonId = R.id.bull_button_9,
         inBullButtonId = R.id.in_bull_button_9,
         backGroundId = R.drawable.square_button_selector,
-        effectId = R.raw.bull5
+        effectId = R.raw.bull9
     ),
     EFFECT10(
         id = 10,
         bullButtonId = R.id.bull_button_10,
         inBullButtonId = R.id.in_bull_button_10,
         backGroundId = R.drawable.square_button_selector,
-        effectId = R.raw.bull5
+        effectId = R.raw.bull10
     );
 
     companion object {

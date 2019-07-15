@@ -11,7 +11,7 @@ import e.yoppie.newdartsx.model.room.entity.EffectEntity
 import e.yoppie.newdartsx.model.room.entity.SearchWordEntity
 import e.yoppie.newdartsx.model.room.entity.SoundEntity
 
-@Database(entities = [SearchWordEntity::class, SoundEntity::class, EffectEntity::class], version = 5)
+@Database(entities = [SearchWordEntity::class, SoundEntity::class, EffectEntity::class], version = 7)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun searchWordDao(): SearchWordDao
     abstract fun soundDao(): SoundDao

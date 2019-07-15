@@ -35,7 +35,7 @@ enum class SoundModel(
         bullButtonId = R.id.bull_sound_button_4,
         inBullButtonId = R.id.in_bull_sound_button_4,
         backGroundId = R.drawable.square_button_selector,
-        soundId = R.raw.bull_sound1
+        soundId = R.raw.bull_sound4
     ),
     EFFECT5(
         id = 5,
