@@ -48,7 +48,7 @@ class TargetActivity : AppCompatActivity() {
         viewModel.setImages(searchWord)
 
         arrowFloatingActionButton.clicks().subscribe {
-            sound.play(this, R.raw.button_sound)
+            if (soundEntity != null && soundEntity!!.othersFlag!!) sound.play(this, R.raw.button_sound)
             val intent = Intent(this, ResultActivity::class.java)
             intent.putExtra("bullCount", bullCount)
             intent.putExtra("inBullCount", inBullCount)
