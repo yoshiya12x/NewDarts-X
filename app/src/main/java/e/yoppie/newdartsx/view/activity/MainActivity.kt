@@ -59,15 +59,6 @@ class MainActivity : AppCompatActivity() {
         initSound()
     }
 
-    private fun initStetho() {
-        Stetho.initialize(
-            Stetho.newInitializerBuilder(this)
-                .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
-                .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
-                .build()
-        )
-    }
-
     @SuppressLint("CheckResult")
     private fun initSound() {
         Completable
@@ -110,5 +101,16 @@ class MainActivity : AppCompatActivity() {
             .fromAction { effectRepository.insertEffect(EffectEntity.create()) }
             .subscribeOn(Schedulers.io())
             .subscribe { Log.d("yoppie_debug", "new effect inserted") }
+    }
+
+    private fun initStetho() {
+        Stetho.initialize(
+            Stetho.newInitializerBuilder(this)
+                .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
+                .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
+                .build()
+
+        )
+
     }
 }
