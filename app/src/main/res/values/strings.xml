@@ -5,7 +5,8 @@
     <string name="bull">BULL</string>
     <string name="in_bull">IN-BULL</string>
     <string name="bull_game">BULL</string>
-    <string name="nob_game">？</string>
+    <string name="double_finish">DOUBLE</string>
+    <string name="double_out">ダブルアウトチャレンジ</string>
     <string name="setting_button">SETTING</string>
     <string name="setting_button_text">≡</string>
     <string name="sound_setting_all">ALL</string>

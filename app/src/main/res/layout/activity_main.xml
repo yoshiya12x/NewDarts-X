@@ -55,19 +55,20 @@
             app:layout_constraintTop_toBottomOf="@+id/top_title"/>
 
     <Button
-            android:id="@+id/nob_game"
+            android:id="@+id/double_out"
             android:textColor="@color/colorPrimary"
             android:background="@drawable/square_button_selector"
             android:layout_width="0dp"
             android:layout_height="70dp"
-            android:text="@string/nob_game"
+            android:text="@string/double_finish"
             android:textSize="@dimen/top_button_size"
             android:layout_margin="@dimen/common_margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/bull_game"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_chainStyle="spread"/>
+            app:layout_constraintHorizontal_chainStyle="spread" android:layout_marginBottom="16dp"
+            app:layout_constraintHorizontal_bias="0.75"/>
 
     <Button
             android:id="@+id/bull_game"
@@ -78,7 +79,7 @@
             android:text="@string/bull_game"
             android:textSize="@dimen/top_button_size"
             android:layout_margin="@dimen/common_margin"
-            app:layout_constraintStart_toEndOf="@id/nob_game"
+            app:layout_constraintStart_toEndOf="@id/double_out"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 

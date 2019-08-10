@@ -30,12 +30,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Animation.emphasize(this, nob_game)
+        Animation.emphasize(this, double_out)
         Animation.emphasize(this, bull_game)
 
         val buttonSound = Sound()
-        nob_game.clicks().subscribe {
+        double_out.clicks().subscribe {
             if (soundEntity != null && soundEntity!!.othersFlag!!) buttonSound.play(this, R.raw.button_sound)
+            val intent = Intent(this, ExplainActivity::class.java)
+            startActivity(intent)
         }
         bull_game.clicks().subscribe {
             if (soundEntity != null && soundEntity!!.othersFlag!!) buttonSound.play(this, R.raw.button_sound)

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:gravity="center"
+              tools:context=".view.activity.ExplainActivity">
+    <TextView
+            android:id="@+id/title1"
+            android:textSize="36sp"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ダブルアウト"/>
+    <TextView
+            android:id="@+id/title2"
+            android:textSize="36sp"
+            android:paddingBottom="40dp"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="チャレンジ"/>
+
+    <TextView
+            android:id="@+id/subTitle"
+            android:textSize="28sp"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ダブルアウトとは"/>
+    <TextView
+            android:id="@+id/description"
+            android:textSize="24sp"
+            android:paddingBottom="60dp"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center"
+            android:layout_width="367dp"
+            android:layout_height="wrap_content"
+            android:text="ダブルに入れて「0」にすること"/>
+
+    <Button
+            android:id="@+id/game_start"
+            android:textColor="@color/colorPrimary"
+            android:background="@drawable/square_button_selector"
+            android:text="Start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+</LinearLayout>
