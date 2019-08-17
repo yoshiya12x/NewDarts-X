@@ -1,82 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:gravity="center"
-              tools:context=".view.activity.DoubleOutActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="doubleOutViewModel" type="e.yoppie.newdartsx.viewmodel.DoubleOutViewModel"/>
+    </data>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical"
+                  android:gravity="center"
+                  tools:context=".view.activity.DoubleOutActivity">
 
-    <TextView
-            android:id="@+id/target_value"
-            android:textSize="150sp"
-            android:textColor="@color/colorPrimary"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="150"/>
+        <TextView
+                android:id="@+id/target_score"
+                android:textSize="150sp"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{doubleOutViewModel.targetScoreLiveData}"/>
 
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="381dp"
-            android:layout_height="95dp"
-            android:gravity="center">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="381dp"
+                android:layout_height="95dp"
+                android:gravity="center">
+            <TextView
+                    android:id="@+id/example"
+                    android:textSize="30sp"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="end"
+                    android:layout_width="98dp"
+                    android:layout_height="wrap_content"
+                    android:text="例："/>
+            <TextView
+                    android:id="@+id/example_first"
+                    android:textSize="30sp"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="center"
+                    android:layout_width="98dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{doubleOutViewModel.exFirstThrowLiveData}"/>
+            <TextView
+                    android:id="@+id/example_second"
+                    android:textSize="30sp"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="center"
+                    android:layout_width="98dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{doubleOutViewModel.exSecondThrowLiveData}"/>
+            <TextView
+                    android:id="@+id/example_third"
+                    android:textSize="30sp"
+                    android:textColor="@color/colorPrimary"
+                    android:gravity="center"
+                    android:layout_width="98dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{doubleOutViewModel.exThirdThrowLiveData}"/>
+        </LinearLayout>
         <TextView
-                android:id="@+id/example"
-                android:textSize="30sp"
-                android:textColor="@color/colorPrimary"
-                android:gravity="end"
-                android:layout_width="98dp"
-                android:layout_height="wrap_content"
-                android:text="例："/>
-        <TextView
-                android:id="@+id/example_first"
-                android:textSize="30sp"
+                android:id="@+id/first_throw"
+                android:textSize="50sp"
                 android:textColor="@color/colorPrimary"
                 android:gravity="center"
                 android:layout_width="98dp"
                 android:layout_height="wrap_content"
-                android:text="20T"/>
+                android:text=""/>
         <TextView
-                android:id="@+id/example_second"
-                android:textSize="30sp"
+                android:id="@+id/second_throw"
+                android:textSize="50sp"
                 android:textColor="@color/colorPrimary"
                 android:gravity="center"
                 android:layout_width="98dp"
                 android:layout_height="wrap_content"
-                android:text="8D"/>
+                android:text=""/>
         <TextView
-                android:id="@+id/example_third"
-                android:textSize="30sp"
+                android:id="@+id/third_throw"
+                android:textSize="50sp"
                 android:textColor="@color/colorPrimary"
                 android:gravity="center"
                 android:layout_width="98dp"
                 android:layout_height="wrap_content"
-                android:text="4D"/>
+                android:text=""/>
+
     </LinearLayout>
-    <TextView
-            android:id="@+id/first_throw"
-            android:textSize="50sp"
-            android:textColor="@color/colorPrimary"
-            android:gravity="center"
-            android:layout_width="98dp"
-            android:layout_height="wrap_content"
-            android:text=""/>
-    <TextView
-            android:id="@+id/second_throw"
-            android:textSize="50sp"
-            android:textColor="@color/colorPrimary"
-            android:gravity="center"
-            android:layout_width="98dp"
-            android:layout_height="wrap_content"
-            android:text=""/>
-    <TextView
-            android:id="@+id/third_throw"
-            android:textSize="50sp"
-            android:textColor="@color/colorPrimary"
-            android:gravity="center"
-            android:layout_width="98dp"
-            android:layout_height="wrap_content"
-            android:text=""/>
-
-</LinearLayout>
+</layout>

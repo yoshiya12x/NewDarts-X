@@ -15,7 +15,7 @@ class BgmService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        mediaPlayer = MediaPlayer.create(this, R.raw.bgm)
+//        mediaPlayer = MediaPlayer.create(this, R.raw.bgm)
     }
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
