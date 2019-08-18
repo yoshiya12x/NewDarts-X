@@ -4,6 +4,8 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.content.Context
 import e.yoppie.newdartsx.R
+import e.yoppie.newdartsx.view.fragment.ButtonDialogFragment
+import android.content.DialogInterface
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.random.Random
@@ -59,10 +61,14 @@ class DoubleOutViewModel : ViewModel() {
         targetScoreLiveData.postValue(targetScore.toString())
     }
 
+    fun isAbleFinishGame() = targetScore <= 0
+
     fun isAbleFinishWithDouble(score: Int) =
         when (score) {
             163 -> false
             165 -> false
             else -> true
         }
+
+    fun isSuccess(isDouble: Boolean) = targetScore == 0 && isDouble
 }
