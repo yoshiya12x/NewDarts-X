@@ -95,6 +95,7 @@ class ScoreManagement(keyEvent: KeyEvent) {
         76 -> ScoreModel(57, false)
         38 -> ScoreModel(60, false)
         32 -> ScoreModel(50, false)
+        66 -> ScoreModel(-1, false)
 
         else -> ScoreModel(0, false)
 
