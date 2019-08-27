@@ -29,7 +29,6 @@ class DoubleOutActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<ActivityDoubleOutBinding>(this, R.layout.activity_double_out)
-
         binding.lifecycleOwner = this
         viewModel = ViewModelProviders.of(this).get(DoubleOutViewModel::class.java)
         binding.doubleOutViewModel = viewModel
@@ -54,6 +53,7 @@ class DoubleOutActivity : AppCompatActivity() {
 
         if (scoreModel.score == -1) {
             viewModel.initView(this)
+            resetVal()
             return super.dispatchKeyEvent(event)
         }
 
@@ -84,5 +84,13 @@ class DoubleOutActivity : AppCompatActivity() {
         if(isSuccess) fragment.title = "Success" else fragment.title = "Fail"
         fragment.show(supportFragmentManager, "button")
 
+    }
+
+    private fun resetVal() {
+
+        first_throw.text = ""
+        second_throw.text = ""
+        third_throw.text = ""
+        throwCount = 0
     }
 }
