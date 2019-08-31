@@ -2,23 +2,16 @@ package e.yoppie.newdartsx.view.activity
 
 import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProviders
-import android.content.DialogInterface
-import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.KeyEvent
-import com.jakewharton.rxbinding2.view.clicks
 import e.yoppie.newdartsx.R
 import e.yoppie.newdartsx.databinding.ActivityDoubleOutBinding
 import e.yoppie.newdartsx.util.ScoreManagement
 import e.yoppie.newdartsx.view.fragment.ButtonDialogFragment
 import e.yoppie.newdartsx.viewmodel.DoubleOutViewModel
 import kotlinx.android.synthetic.main.activity_double_out.*
-import kotlinx.android.synthetic.main.activity_explain.*
-import kotlinx.android.synthetic.main.fragment_dialog.*
-
 
 class DoubleOutActivity : AppCompatActivity() {
     private var isPreCode = false
