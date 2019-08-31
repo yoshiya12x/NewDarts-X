@@ -22,7 +22,7 @@ class ButtonDialogFragment : AppCompatDialogFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        dialog.setOnKeyListener { _, _, event : KeyEvent? ->
+        dialog.setOnKeyListener { _, _, event: KeyEvent? ->
             var isPreCode = false
             if (event == null) {
                 return@setOnKeyListener false
@@ -43,18 +43,24 @@ class ButtonDialogFragment : AppCompatDialogFragment() {
             return@setOnKeyListener false
         }
     }
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             val builder = AlertDialog.Builder(activity!!)
-            val binding = DataBindingUtil.inflate<FragmentDialogBinding>(LayoutInflater.from(activity), e.yoppie.newdartsx.R.layout.fragment_dialog, null, false)
+            val binding = DataBindingUtil.inflate<FragmentDialogBinding>(
+                LayoutInflater.from(activity),
+                e.yoppie.newdartsx.R.layout.fragment_dialog,
+                null,
+                false
+            )
             val view = binding.root
             view.dialog_title.text = title
-            view.game_again.clicks().subscribe{
+            view.game_again.clicks().subscribe {
                 val intent = Intent(requireActivity(), DoubleOutActivity::class.java)
                 startActivity(intent)
             }
 
-            view.to_top.clicks().subscribe{
+            view.to_top.clicks().subscribe {
                 val intent = Intent(requireActivity(), MainActivity::class.java)
                 startActivity(intent)
             }

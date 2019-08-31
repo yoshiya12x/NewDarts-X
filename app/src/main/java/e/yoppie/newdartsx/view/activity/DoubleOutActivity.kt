@@ -81,7 +81,7 @@ class DoubleOutActivity : AppCompatActivity() {
         val fragment = ButtonDialogFragment()
         val isSuccess = viewModel.isSuccess(isDouble)
 
-        if(isSuccess) fragment.title = "Success" else fragment.title = "Fail"
+        if (isSuccess) fragment.title = "Success" else fragment.title = "Fail"
         fragment.show(supportFragmentManager, "button")
 
     }
