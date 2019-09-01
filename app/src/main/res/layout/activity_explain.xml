@@ -8,7 +8,7 @@
         android:gravity="center"
         tools:context=".view.activity.ExplainActivity">
     <TextView
-            android:id="@+id/doubleOutExplainTitle"
+            android:id="@+id/doubleOutExplainTitleTextView"
             android:textSize="@dimen/double_out_explain_title"
             android:paddingBottom="@dimen/double_out_explain_title_padding"
             android:textColor="@color/colorPrimary"
@@ -18,7 +18,7 @@
             android:text="@string/double_out_explain_title"/>
 
     <TextView
-            android:id="@+id/doubleOutExplainBody"
+            android:id="@+id/doubleOutExplainBodyTextView"
             android:textSize="@dimen/double_out_explain_body"
             android:paddingBottom="@dimen/double_out_explain_body_padding"
             android:textColor="@color/colorPrimary"
@@ -28,7 +28,7 @@
             android:text="@string/double_out_explain_body"/>
 
     <Button
-            android:id="@+id/DoubleOutStart"
+            android:id="@+id/doubleOutStartButton"
             android:textColor="@color/colorPrimary"
             android:background="@drawable/square_button_selector"
             android:text="@string/game_start"

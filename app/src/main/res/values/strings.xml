@@ -6,6 +6,10 @@
     <string name="in_bull">IN-BULL</string>
     <string name="bull_game">BULL</string>
     <string name="double_out">DOUBLE</string>
+    <string name="double_out_ex_text">例：%s %s %s</string>
+    <string name="double_out_first_throw_text">第1投： %s</string>
+    <string name="double_out_second_throw_text">第2投： %s</string>
+    <string name="double_out_third_throw_text">第3投： %s</string>
     <string name="double_out_explain_title">ダブルアウト\nチャレンジ</string>
     <string name="double_out_explain_body">ダブルアウトとは\nダブルに入れて「0」にすること</string>
     <string name="setting_button">SETTING</string>
@@ -22,6 +26,8 @@
     <string name="game_start">START</string>
     <string name="game_again">AGAIN</string>
     <string name="game_end">END</string>
+    <string name="game_success">SUCCESS</string>
+    <string name="game_fail">FAIL</string>
     <string name="game_image1">IMAGE1</string>
     <string name="game_image2">IMAGE2</string>
     <string name="game_image3">IMAGE3</string>

@@ -13,29 +13,31 @@ import e.yoppie.newdartsx.view.activity.MainActivity
 import kotlinx.android.synthetic.main.fragment_dialog.view.*
 import android.support.v7.app.AppCompatDialogFragment
 import android.view.KeyEvent
+import e.yoppie.newdartsx.R
 import e.yoppie.newdartsx.util.ScoreManagement
 
 
-class ButtonDialogFragment : AppCompatDialogFragment() {
+class DoubleOutResultDialogFragment : AppCompatDialogFragment() {
 
-    lateinit var title: String
+    var title = ""
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         dialog.setOnKeyListener { _, _, event: KeyEvent? ->
-            var isPreCode = false
             if (event == null) {
                 return@setOnKeyListener false
             }
 
             val scoreManagement = ScoreManagement(event)
+            var isPreCode = false
+
             if (scoreManagement.isPreCode()) {
                 isPreCode = true
             }
 
-            val scoreModel = if (isPreCode) scoreManagement.convertPreCodeNob() else scoreManagement.convertNob()
+            val scoreModel = if (isPreCode) scoreManagement.convertPreCodeDoubleOutScore() else scoreManagement.convertDoubleOutScore()
 
-            if (scoreModel.score == -1) {
+            if (scoreModel.score == scoreManagement.changeButtonCode) {
                 val intent = Intent(requireActivity(), DoubleOutActivity::class.java)
                 startActivity(intent)
             }
@@ -46,23 +48,24 @@ class ButtonDialogFragment : AppCompatDialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
-            val builder = AlertDialog.Builder(activity!!)
+            val builder = AlertDialog.Builder(it)
             val binding = DataBindingUtil.inflate<FragmentDialogBinding>(
-                LayoutInflater.from(activity),
-                e.yoppie.newdartsx.R.layout.fragment_dialog,
+                LayoutInflater.from(it),
+                R.layout.fragment_dialog,
                 null,
                 false
             )
             val view = binding.root
-            view.dialog_title.text = title
-            view.game_again.clicks().subscribe {
-                val intent = Intent(requireActivity(), DoubleOutActivity::class.java)
-                startActivity(intent)
-            }
-
-            view.to_top.clicks().subscribe {
-                val intent = Intent(requireActivity(), MainActivity::class.java)
-                startActivity(intent)
+            view.apply {
+                dialog_title.text = title
+                game_again.clicks().subscribe {
+                    val intent = Intent(requireActivity(), DoubleOutActivity::class.java)
+                    startActivity(intent)
+                }
+                to_top.clicks().subscribe {
+                    val intent = Intent(requireActivity(), MainActivity::class.java)
+                    startActivity(intent)
+                }
             }
 
             builder.setView(view)
@@ -71,5 +74,9 @@ class ButtonDialogFragment : AppCompatDialogFragment() {
         } ?: throw IllegalAccessError("Activity cannot be null")
 
 
+    }
+
+    companion object{
+        const val TAG = "ButtonDialog"
     }
 }

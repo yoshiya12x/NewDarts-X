@@ -5,11 +5,15 @@
     <dimen name="top_button_size">36sp</dimen>
     <dimen name="setting_button_text">40sp</dimen>
     <dimen name="setting_search_word">20sp</dimen>
+    <dimen name="double_out_target">150sp</dimen>
+    <dimen name="double_out_score_text">40sp</dimen>
+    <dimen name="double_out_ex_score_text">30sp</dimen>
     <dimen name="double_out_explain_title">36sp</dimen>
     <dimen name="double_out_explain_body">22sp</dimen>
     <dimen name="del_setting_search_word_button">30sp</dimen>
     <!--padding-->
     <dimen name="common_padding">16dp</dimen>
+    <dimen name="double_out_ex_padding">60dp</dimen>
     <dimen name="double_out_explain_title_padding">40dp</dimen>
     <dimen name="double_out_explain_body_padding">60dp</dimen>
     <!--margin-->

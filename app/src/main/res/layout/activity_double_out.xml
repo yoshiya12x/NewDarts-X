@@ -11,76 +11,43 @@
                   tools:context=".view.activity.DoubleOutActivity">
 
         <TextView
-                android:id="@+id/target_score"
-                android:textSize="150sp"
+                android:id="@+id/target"
+                android:textSize="@dimen/double_out_target"
                 android:textColor="@color/colorPrimary"
                 android:gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{doubleOutViewModel.targetScoreLiveData}"/>
-
-        <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="381dp"
-                android:layout_height="95dp"
-                android:gravity="center">
-            <TextView
-                    android:id="@+id/example"
-                    android:textSize="30sp"
-                    android:textColor="@color/colorPrimary"
-                    android:gravity="end"
-                    android:layout_width="98dp"
-                    android:layout_height="wrap_content"
-                    android:text="例："/>
-            <TextView
-                    android:id="@+id/example_first"
-                    android:textSize="30sp"
-                    android:textColor="@color/colorPrimary"
-                    android:gravity="center"
-                    android:layout_width="98dp"
-                    android:layout_height="wrap_content"
-                    android:text="@{doubleOutViewModel.exFirstThrowLiveData}"/>
-            <TextView
-                    android:id="@+id/example_second"
-                    android:textSize="30sp"
-                    android:textColor="@color/colorPrimary"
-                    android:gravity="center"
-                    android:layout_width="98dp"
-                    android:layout_height="wrap_content"
-                    android:text="@{doubleOutViewModel.exSecondThrowLiveData}"/>
-            <TextView
-                    android:id="@+id/example_third"
-                    android:textSize="30sp"
-                    android:textColor="@color/colorPrimary"
-                    android:gravity="center"
-                    android:layout_width="98dp"
-                    android:layout_height="wrap_content"
-                    android:text="@{doubleOutViewModel.exThirdThrowLiveData}"/>
-        </LinearLayout>
+                android:text="@{doubleOutViewModel.targetLiveData}"/>
+        <TextView
+                android:id="@+id/exampleScore"
+                android:textSize="@dimen/double_out_ex_score_text"
+                android:paddingBottom="@dimen/double_out_ex_padding"
+                android:textColor="@color/colorPrimary"
+                android:gravity="end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/double_out_ex_text(doubleOutViewModel.exFirstThrowLiveData, doubleOutViewModel.exSecondThrowLiveData, doubleOutViewModel.exThirdThrowLiveData)}"/>
         <TextView
                 android:id="@+id/first_throw"
-                android:textSize="50sp"
+                android:textSize="@dimen/double_out_score_text"
                 android:textColor="@color/colorPrimary"
                 android:gravity="center"
-                android:layout_width="98dp"
-                android:layout_height="wrap_content"
-                android:text=""/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
         <TextView
                 android:id="@+id/second_throw"
-                android:textSize="50sp"
+                android:textSize="@dimen/double_out_score_text"
                 android:textColor="@color/colorPrimary"
                 android:gravity="center"
-                android:layout_width="98dp"
-                android:layout_height="wrap_content"
-                android:text=""/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
         <TextView
                 android:id="@+id/third_throw"
-                android:textSize="50sp"
+                android:textSize="@dimen/double_out_score_text"
                 android:textColor="@color/colorPrimary"
                 android:gravity="center"
-                android:layout_width="98dp"
-                android:layout_height="wrap_content"
-                android:text=""/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
     </LinearLayout>
 </layout>
