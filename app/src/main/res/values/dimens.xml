@@ -3,6 +3,8 @@
     <!--size-->
     <dimen name="app_title_size">90sp</dimen>
     <dimen name="top_button_size">36sp</dimen>
+    <dimen name="top_button_layout_width">0dp</dimen>
+    <dimen name="top_button_layout_height">70dp</dimen>
     <dimen name="setting_button_text">40sp</dimen>
     <dimen name="setting_search_word">20sp</dimen>
     <dimen name="double_out_target">150sp</dimen>
