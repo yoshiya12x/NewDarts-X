@@ -14,22 +14,21 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
                 android:gravity="center"
-                android:text=""
-                android:textSize="40sp"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="32dp"/>
+                android:textSize="@dimen/dialog_title_size"
+                android:layout_marginTop="@dimen/dialog_title_margin_top"
+                android:layout_marginBottom="@dimen/dialog_title_margin_bottom"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginBottom="32dp">
+            android:layout_marginBottom="@dimen/dialog_button_margin_bottom">
 
         <Button
                 android:id="@+id/game_again"
                 android:textColor="@color/colorPrimary"
                 android:background="@drawable/square_button_selector"
-                android:text="もう一度"
+                android:text="@string/game_again"
                 android:layout_margin="@dimen/common_margin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
@@ -37,7 +36,7 @@
                 android:id="@+id/to_top"
                 android:textColor="@color/colorPrimary"
                 android:background="@drawable/square_button_selector"
-                android:text="Topへ"
+                android:text="@string/game_end"
                 android:layout_margin="@dimen/common_margin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>

@@ -4,8 +4,10 @@ import android.view.KeyEvent
 import e.yoppie.newdartsx.model.ScoreModel
 
 class ScoreManagement(keyEvent: KeyEvent) {
+
     private val keyCode = keyEvent.keyCode
     private val preCode = 59
+    val changeButtonCode = -1
 
     fun isPreCode() = keyCode == preCode
 
@@ -58,7 +60,7 @@ class ScoreManagement(keyEvent: KeyEvent) {
         else -> 0
     }
 
-    fun convertNob() = when (keyCode) {
+    fun convertDoubleOutScore() = when (keyCode) {
         7 -> ScoreModel(2, false)
         31 -> ScoreModel(3, false)
         48 -> ScoreModel(4, false)
@@ -96,12 +98,10 @@ class ScoreManagement(keyEvent: KeyEvent) {
         38 -> ScoreModel(60, false)
         32 -> ScoreModel(50, false)
         66 -> ScoreModel(-1, false)
-
         else -> ScoreModel(0, false)
-
     }
 
-    fun convertPreCodeNob() = when (keyCode) {
+    fun convertPreCodeDoubleOutScore() = when (keyCode) {
         35, 50 -> ScoreModel(1, false)
         10 -> ScoreModel(2, false)
         11 -> ScoreModel(3, false)
@@ -139,8 +139,6 @@ class ScoreManagement(keyEvent: KeyEvent) {
         51 -> ScoreModel(51, false)
         44 -> ScoreModel(54, false)
         54 -> ScoreModel(50, true)
-
-
         else -> ScoreModel(0, false)
     }
 }

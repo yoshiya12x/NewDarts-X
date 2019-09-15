@@ -15,7 +15,7 @@ class ExplainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_explain)
 
-        game_start.clicks().subscribe {
+        doubleOutStartButton.clicks().subscribe {
             val intent = Intent(this, DoubleOutActivity::class.java)
             startActivity(intent)
         }
