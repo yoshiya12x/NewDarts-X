@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        tools:context=".view.activity.ExplainActivity">
+    <TextView
+            android:id="@+id/doubleOutExplainTitleTextView"
+            android:textSize="@dimen/double_out_explain_title"
+            android:paddingBottom="@dimen/double_out_explain_title_padding"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/double_out_explain_title"/>
+
+    <TextView
+            android:id="@+id/doubleOutExplainBodyTextView"
+            android:textSize="@dimen/double_out_explain_body"
+            android:paddingBottom="@dimen/double_out_explain_body_padding"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/double_out_explain_body"/>
+
+    <Button
+            android:id="@+id/doubleOutStartButton"
+            android:textColor="@color/colorPrimary"
+            android:background="@drawable/square_button_selector"
+            android:text="@string/game_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+</LinearLayout>
