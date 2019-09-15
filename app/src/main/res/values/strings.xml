@@ -7,9 +7,9 @@
     <string name="bull_game">BULL</string>
     <string name="double_out">DOUBLE</string>
     <string name="double_out_ex_text">例：%s %s %s</string>
-    <string name="double_out_first_throw_text">First： %s</string>
-    <string name="double_out_second_throw_text">Second： %s</string>
-    <string name="double_out_third_throw_text">Third： %s</string>
+    <string name="double_out_first_throw_text">1st： %s</string>
+    <string name="double_out_second_throw_text">2nd： %s</string>
+    <string name="double_out_third_throw_text">3rd： %s</string>
     <string name="double_out_explain_title">ダブルアウト\nチャレンジ</string>
     <string name="double_out_explain_body">ダブルアウトとは\nダブルに入れて「0」にすること</string>
     <string name="setting_button">SETTING</string>

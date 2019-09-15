@@ -14,15 +14,15 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
                 android:gravity="center"
-                android:textSize="40sp"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="32dp"/>
+                android:textSize="@dimen/dialog_title_size"
+                android:layout_marginTop="@dimen/dialog_title_margin_top"
+                android:layout_marginBottom="@dimen/dialog_title_margin_bottom"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginBottom="32dp">
+            android:layout_marginBottom="@dimen/dialog_button_margin_bottom">
 
         <Button
                 android:id="@+id/game_again"

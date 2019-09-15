@@ -31,6 +31,7 @@
                 android:id="@+id/first_throw"
                 android:textSize="@dimen/double_out_score_text"
                 android:textColor="@color/colorPrimary"
+                android:paddingBottom="@dimen/double_out_throw_padding"
                 android:gravity="start"
                 android:layout_width="@dimen/double_out_score_layout_width"
                 android:layout_height="wrap_content"/>
@@ -38,6 +39,7 @@
                 android:id="@+id/second_throw"
                 android:textSize="@dimen/double_out_score_text"
                 android:textColor="@color/colorPrimary"
+                android:paddingBottom="@dimen/double_out_throw_padding"
                 android:gravity="start"
                 android:layout_width="@dimen/double_out_score_layout_width"
                 android:layout_height="wrap_content"/>
@@ -45,6 +47,7 @@
                 android:id="@+id/third_throw"
                 android:textSize="@dimen/double_out_score_text"
                 android:textColor="@color/colorPrimary"
+                android:paddingBottom="@dimen/double_out_throw_padding"
                 android:gravity="start"
                 android:layout_width="@dimen/double_out_score_layout_width"
                 android:layout_height="wrap_content"/>

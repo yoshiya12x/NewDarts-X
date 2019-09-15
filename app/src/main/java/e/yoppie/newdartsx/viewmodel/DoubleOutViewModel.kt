@@ -3,9 +3,11 @@ package e.yoppie.newdartsx.viewmodel
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.content.Context
+import android.util.Log
 import e.yoppie.newdartsx.R
 import org.json.JSONArray
 import org.json.JSONObject
+import java.io.File
 import kotlin.random.Random
 
 class DoubleOutViewModel : ViewModel() {
@@ -42,14 +44,14 @@ class DoubleOutViewModel : ViewModel() {
     fun initView(context: Context) {
         val assetManager = context.resources.openRawResource(DOUBLE_OUT_JSON)
         val buffer = ByteArray(assetManager.available())
-        while (assetManager.read(buffer) == -1) {}
+        assetManager.read(buffer)
+        assetManager.close()
 
         target = Random.nextInt(MAX_SCORE) + OFFSET
 
         if (!isAbleFinishWithDouble(target)) initView(context)
 
         targetLiveData.postValue(target.toString())
-
         val jsonObject = JSONObject(String(buffer))
         val exThrowTarget = jsonObject.getJSONArray(target.toString()) as JSONArray
 
