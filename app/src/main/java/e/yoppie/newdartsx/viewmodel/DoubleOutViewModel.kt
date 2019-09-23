@@ -13,7 +13,7 @@ import kotlin.random.Random
 class DoubleOutViewModel : ViewModel() {
     companion object {
         private const val DOUBLE_OUT_JSON = R.raw.double_out
-        private const val MAX_SCORE = 38
+        private const val MAX_SCORE = 168
         private const val OFFSET = 2
         private const val INIT_TEXT = ""
         private val invalidTarget = listOf<Int>(
